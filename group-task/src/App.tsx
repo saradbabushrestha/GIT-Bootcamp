@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Router and Routes
-import Sidebar from "./Layouts/Sidebar"; // Import Sidebar
-import Feed from "./Pages/Feed"; // Example Feed page
-import Profile from "./Pages/Profile"; // Example Profile page
-import Logout from "./Pages/Logout"; // Example Logout page
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./Layouts/Sidebar";
+import Feed from "./Pages/Feed";
+import Profile from "./Pages/Profile";
+import Logout from "./Pages/Logout";
 
 function App() {
   return (
