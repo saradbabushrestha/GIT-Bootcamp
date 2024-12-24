@@ -1,10 +1,10 @@
-import { Sidebar } from "./Layouts/Sidebar";
+// import { Sidebar } from "./Layouts/Sidebar";
+import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
   return (
     <>
-      <Sidebar />
-      <p>Group Task</p>
+      <SignUp />
     </>
   );
 }
