@@ -3,5 +3,4 @@ export type TextFieldComponentProps={
     name:string;
     label:string;
     inputType:string;
-    value:string;
 }
