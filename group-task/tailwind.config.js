@@ -6,6 +6,9 @@ export default {
       colors: {
         "primary-color": "#1E4FFE",
       },
+      backgroundImage:{
+        "sign-up":`url("https://i.pinimg.com/736x/f7/fe/f6/f7fef63970ddd892ae29b1f99c1a0348.jpg")`
+      }
     },
   },
   plugins: [],

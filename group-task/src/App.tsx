@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="flex">
         {/* <Sidebar /> */}
-        <div className="flex-grow p-4">
+        <div className="">
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/feed" element={<Feed />} />
