@@ -5,9 +5,9 @@ const TextFieldComponent = ({name,placeholder,label,inputType}:TextFieldComponen
   return (
     <>
       <div>
-        <p>{label}</p>
+        <p className="pt-[21px] pb-[5px]">{label}</p>
         <div>
-          <input name={name} placeholder={placeholder} type={inputType} className="w-[30vw] rounded-lg border border-black pl-2 pr-2 pt-1 pb-2" />
+          <input name={name} placeholder={placeholder} type={inputType} className="w-[404px] rounded-[10px] border border-black pl-[10px] pt-[10px] pb-[10px] h-[32px]" />
         </div>
       </div>
     </>
