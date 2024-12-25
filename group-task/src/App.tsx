@@ -4,6 +4,7 @@ import Feed from "./Pages/Feed";
 import Profile from "./Pages/Profile";
 import Logout from "./Pages/Logout";
 import SignUp from "./Pages/SignUp/SignUp";
+import Login from "./Pages/Login";
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
             <Route path="/feed" element={<Feed />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
