@@ -1,3 +1,4 @@
+import FeedUI from "./Layouts/FeedUI";
 import { Sidebar } from "./Layouts/Sidebar";
 
 function App() {
@@ -5,6 +6,8 @@ function App() {
     <>
       <Sidebar />
       <p>Group Task</p>
+
+      <FeedUI/>
     </>
   );
 }
