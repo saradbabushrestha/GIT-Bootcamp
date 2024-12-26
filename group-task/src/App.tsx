@@ -10,6 +10,7 @@ function App() {
     <Router>
       <div className="flex">
         {/* <Sidebar /> */}
+        <Sidebar/>
         <SuperAdminDashboard/>
         <div className="">
           {/* <Routes>
