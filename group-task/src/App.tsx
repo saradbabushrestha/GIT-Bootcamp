@@ -8,9 +8,9 @@ import SuperAdminDashboard from "./modules/superadmin";
 function App() {
   return (
     <Router>
-      <div className="flex">
+      <div className="flex ">
         <Sidebar />
-        <div className="">
+        <div className="flex-grow">
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/feed" element={<Feed />} />

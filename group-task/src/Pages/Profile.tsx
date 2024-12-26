@@ -1,6 +1,7 @@
 import React from "react";
 
 interface UserProfileProps {}
+
 const TopCard = () => {
   console.log("Top card option");
 };
@@ -8,19 +9,19 @@ const MiddleButton = () => {
   console.log("Middle Edit");
 };
 const DownCard = () => {
-  console.log("DOwn Edit");
+  console.log("Down Edit");
 };
 
 const UserProfile: React.FC<UserProfileProps> = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow">
       <div className="bg-white p-6 rounded-lg shadow mb-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 lg:space-x-6">
           <div className="flex items-center">
             <img
               src="https://artisan-avenue.onrender.com/assets/profile-DrMMYWIp.png"
               alt="Profile"
-              className="w-24 h-24 rounded-full mr-6"
+              className="w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full mb-4 lg:mb-0"
             />
             <div>
               <h2 className="text-2xl font-semibold">Sarad Babu Shrestha</h2>
@@ -29,14 +30,13 @@ const UserProfile: React.FC<UserProfileProps> = () => {
             </div>
           </div>
           <button
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 "
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 w-full lg:w-auto"
             onClick={TopCard}
           >
             Edit
           </button>
         </div>
       </div>
-
       <div className="bg-white p-6 rounded-lg shadow mb-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Personal Information</h3>
@@ -66,7 +66,6 @@ const UserProfile: React.FC<UserProfileProps> = () => {
         </div>
       </div>
 
-      {/* Address Section */}
       <div className="bg-white p-6 rounded-lg shadow">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Address</h3>
