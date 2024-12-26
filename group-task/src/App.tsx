@@ -4,7 +4,7 @@ import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
-import SuperAdminDashboard from "./pages/SuperAdminDashboard";
+import SuperAdminDashboard from "./modules/superadmin";
 function App() {
   return (
     <Router>
@@ -13,6 +13,7 @@ function App() {
         <div className="">
           <Routes>
             <Route path="/" element={<SignUp />} />
+
             <Route path="/feed" element={<Feed />} />
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
