@@ -4,7 +4,7 @@ import Feed from "../src/Pages/Feed";
 import Profile from "../src/Pages/Profile";
 import Logout from "../src/Pages/Logout";
 import SignUp from "../src/Pages/SignUp";
-import SuperAdminDashboard from "../src/modules/superadmin/index";
+import SuperAdminDashboard from "./modules/superadmin";
 function App() {
   return (
     <Router>

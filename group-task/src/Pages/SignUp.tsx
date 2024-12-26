@@ -1,4 +1,4 @@
-import ButtonComponent from "../../components/Sign Up/ButtonComponent";
+import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
 const SignUp = () => {
@@ -8,7 +8,7 @@ const SignUp = () => {
         {/* content of the page  */}
         <div className="mt-12 ml-[174px] ">
           <p className="mb-[20px] text-[32px] font-medium">Get Started Now</p>
-          <div className="flex flex-col gap-[19.7px]">
+          <div className="flex flex-col gap-2">
             <TextFieldComponent
               name={"name"}
               placeholder="Enter your username"
