@@ -1,13 +1,13 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { User } from "../types/UserTypes";
+import { User } from "../../types/users/users";
 import {
   fetchUsers,
   deleteUser,
   promoteToAdmin,
   demoteToUser,
-} from "../services/userServices";
-import UserTable from "../modules/users/components/UserTable";
-import SearchBar from "../components/SearchBar";
+} from "../../api/userServices";
+import UserTable from "../../modules/users/components/UserTable";
+import SearchBar from "../../components/SearchBar";
 
 const SuperAdminDashboard: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);

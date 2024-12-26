@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../../types/UserTypes";
+import { User } from "../../types/users/users";
 
 interface AdminTableProps {
   admins: User[];
