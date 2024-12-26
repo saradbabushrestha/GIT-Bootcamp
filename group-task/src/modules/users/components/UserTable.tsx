@@ -1,12 +1,7 @@
+// this is the user table. this table is for the superadmin only
+// this table contains all the list of users(normal users and admins)
 import React from "react";
-import { User } from "../../../types/users/users";
-
-interface UserTableProps {
-  users: User[];
-  onDelete: (id: number) => void;
-  onPromote: (id: number) => void;
-  onDemote: (id: number) => void;
-}
+import { UserTableProps } from "../../../types/users/usertableprops";
 
 const UserTable: React.FC<UserTableProps> = ({
   users,
@@ -34,21 +29,22 @@ const UserTable: React.FC<UserTableProps> = ({
               <td className="px-4 py-2 border-b">{user.email}</td>
               <td className="px-4 py-2 border-b">{user.role}</td>
               <td className="px-4 py-2 border-b text-center">
+                {/* The reason I have used onClick={()=> onDelete?.(user.id) } is because in typescript using ? (optional) makes it undefined and typescript doesnot allow invoking undefined function directily and mannualy invoking */}
                 <button
-                  onClick={() => onDelete(user.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
+                  onClick={() => onDelete?.(user.id)}
+                  className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 sm:w-30">
                   Remove
                 </button>
                 {user.role === "user" ? (
                   <button
-                    onClick={() => onPromote(user.id)}
-                    className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 ml-2">
+                    onClick={() => onPromote?.(user.id)}
+                    className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 ml-2 sm:w-40">
                     Promote to Admin
                   </button>
                 ) : (
                   <button
-                    onClick={() => onDemote(user.id)}
-                    className="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 ml-2">
+                    onClick={() => onDemote?.(user.id)}
+                    className="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 ml-2 sm:w-40">
                     Demote to User
                   </button>
                 )}
