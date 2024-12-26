@@ -13,7 +13,6 @@ function App() {
         <div className="">
           <Routes>
             <Route path="/" element={<SignUp />} />
-
             <Route path="/feed" element={<Feed />} />
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
