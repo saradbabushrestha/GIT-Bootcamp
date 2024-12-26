@@ -5,20 +5,25 @@ const TextFieldComponent = ({
   placeholder,
   label,
   inputType,
+  handleChange,
+  handleBlur,
+  value,
+  errorMessage,
+  className
 }: TextFieldComponentProps) => {
   return (
     <>
-      <div>
-        <p className="pt-[21px] pb-[5px] font-medium">{label}</p>
-        <div>
-          <input
-            name={name}
-            placeholder={placeholder}
-            type={inputType}
-            className="w-[404px] rounded-[10px] border border-black pl-[10px] pt-[10px] pb-[10px] h-[32px]"
-          />
-        </div>
-      </div>
+      <p className="pt-[21px] pb-[5px] font-medium">{label}</p>
+      <input
+        name={name}
+        placeholder={placeholder}
+        type={inputType}
+        className={`w-[404px] rounded-[10px] border border-black pl-[10px] pt-[10px] pb-[10px] h-[32px] ${className}`}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={value}
+      />
+      <p>{errorMessage}</p>
     </>
   );
 };

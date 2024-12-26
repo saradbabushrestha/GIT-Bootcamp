@@ -10,30 +10,50 @@ const SignUp = () => {
           <p className="mb-[20px] text-[32px] font-medium">Get Started Now</p>
           <div className="flex flex-col gap-2">
             <TextFieldComponent
-              name={"name"}
+              name="name"
               placeholder="Enter your username"
               inputType="string"
               label="Name"
+              handleChange={}
+              handleBlur={}
+              value=""
+              errorMessage=""
             />
             <TextFieldComponent
-              name={"email"}
+              name="email"
               placeholder="Enter your email"
               inputType="string"
               label="Email"
+              handleChange={}
+              handleBlur={}
+              value=""
+              errorMessage=""
             />
             <TextFieldComponent
-              name={"password"}
+              name="password"
               placeholder="Enter your password"
               inputType="password"
               label="Password"
+              handleChange={}
+              handleBlur={}
+              value=""
+              errorMessage=""
             />
             <TextFieldComponent
-              name={"confirmPassword"}
+              name="confirmPassword"
               placeholder="Confirm password"
               inputType="password"
               label="Confirm Password"
+              handleChange={}
+              handleBlur={}
+              value=""
+              errorMessage=""
             />
-            <ButtonComponent btnBgColor="bg-primary-color" btnText="Sign Up" />
+            <ButtonComponent
+              btnText="Sign Up"
+              type="submit"
+              handleClick={() => {}}
+            />
           </div>
         </div>
 
