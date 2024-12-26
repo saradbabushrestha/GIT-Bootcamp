@@ -1,5 +1,5 @@
 import ButtonComponent from "../../components/Sign Up/ButtonComponent";
-import TextFieldComponent from "../../components/Sign Up/TextFieldComponent";
+import TextFieldComponent from "../components/TextFieldComponent";
 
 const SignUp = () => {
   return (
