@@ -1,8 +1,13 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { User } from "../../types/UserTypes";
-import { fetchUsers, deleteUser, promoteToAdmin, demoteToUser } from "../../services/userServices";
-import UserTable from "./UserTable";
-import SearchBar from "../SearchBar";
+import { User } from "../types/UserTypes";
+import {
+  fetchUsers,
+  deleteUser,
+  promoteToAdmin,
+  demoteToUser,
+} from "../services/userServices";
+import UserTable from "../modules/users/components/UserTable";
+import SearchBar from "../components/SearchBar";
 
 const SuperAdminDashboard: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -43,15 +48,27 @@ const SuperAdminDashboard: React.FC = () => {
   // Handle promote user to admin
   const handlePromote = async (id: number): Promise<void> => {
     await promoteToAdmin(id);
-    setUsers(users.map((user) => (user.id === id ? { ...user, role: "admin" } : user)));
-    setFilteredUsers(filteredUsers.map((user) => (user.id === id ? { ...user, role: "admin" } : user)));
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, role: "admin" } : user))
+    );
+    setFilteredUsers(
+      filteredUsers.map((user) =>
+        user.id === id ? { ...user, role: "admin" } : user
+      )
+    );
   };
 
   // Handle demote admin to user
   const handleDemote = async (id: number): Promise<void> => {
     await demoteToUser(id);
-    setUsers(users.map((user) => (user.id === id ? { ...user, role: "user" } : user)));
-    setFilteredUsers(filteredUsers.map((user) => (user.id === id ? { ...user, role: "user" } : user)));
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, role: "user" } : user))
+    );
+    setFilteredUsers(
+      filteredUsers.map((user) =>
+        user.id === id ? { ...user, role: "user" } : user
+      )
+    );
   };
 
   return (
