@@ -1,4 +1,4 @@
-import ButtonComponent from "../../components/Sign Up/ButtonComponent";
+import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
 const SignUp = () => {
