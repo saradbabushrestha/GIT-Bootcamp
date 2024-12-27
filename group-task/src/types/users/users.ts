@@ -1,7 +1,10 @@
-export interface User {
-    id: number;
-    name: string;
+export type User = {
+    id: string; 
+    username: string;
     email: string;
-    role:"user" | "admin";
-}
+    password: string;
+    rePassword: string;
+    rememberMe: boolean;
+    acceptTerm: boolean;
+  };
   

@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "../src/layouts/Sidebar";
-import Feed from "../src/pages/Feed";
-import Profile from "../src/pages/Profile";
-import Logout from "../src/pages/Logout";
-import SignUp from "../src/pages/SignUp";
+import Feed from "./pages/Feed";
+import Profile from "./pages/Profile";
+import Logout from "./pages/Logout";
+import SignUp from "./pages/SignUp";
 import SuperAdminDashboard from "./modules/superadmin";
 import AdminDashboard from "./modules/admin";
 function App() {
