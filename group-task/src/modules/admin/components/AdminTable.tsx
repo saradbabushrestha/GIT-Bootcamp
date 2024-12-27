@@ -9,7 +9,9 @@ const AdminTable: React.FC<UserTableProps> = ({ users, onDelete }) => {
         <tr>
           <th className="px-4 py-2 border-b text-center bg-slate-300">Name</th>
           <th className="px-4 py-2 border-b text-center bg-slate-300">Email</th>
-          <th className="px-4 py-2 border-b text-center bg-slate-300">Actions</th>
+          <th className="px-4 py-2 border-b text-center bg-slate-300">
+            Actions
+          </th>
         </tr>
       </thead>
       <tbody>

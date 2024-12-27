@@ -3,19 +3,17 @@ import { TextFieldComponentProps } from "../types/utils/utils";
 const TextFieldComponent = ({
   name,
   placeholder,
-  label,
   inputType,
 }: TextFieldComponentProps) => {
   return (
     <>
       <div>
-        <p className="pt-[21px] pb-[5px] font-medium">{label}</p>
         <div>
           <input
             name={name}
             placeholder={placeholder}
             type={inputType}
-            className="w-[404px] rounded-[10px] border border-black pl-[10px] pt-[10px] pb-[10px] h-[32px]"
+            className="w-[453px] h-[64px] mb-[10px] placeholder-[rgb(45,49,166,0.2)] text-[rgb(45,49,166,0.2)] border-2 bg-[rgb(128,152,249,0.10)] rounded-[10px]  border-[rgb(128,152,249,0.5)] pl-[10px] pt-[10px] pb-[10px]"
           />
         </div>
       </div>

@@ -1,91 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { User } from "../types/users/userprofile";
 
-interface UserProfileProps {}
-const TopCard = () => {
-  console.log("Top card option");
-};
-const MiddleButton = () => {
-  console.log("Middle Edit");
-};
-const DownCard = () => {
-  console.log("DOwn Edit");
-};
+import TopCard from "../components/TopCard";
+import MiddleButton from "../components/MiddleButton";
+import DownCard from "../components/DownCard";
 
-const UserProfile: React.FC<UserProfileProps> = () => {
+const UserProfile: React.FC = () => {
+  const [user, setUser] = useState<User>(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser
+      ? JSON.parse(savedUser)
+      : {
+          firstName: "Sarad Babu",
+          lastName: "Shrestha",
+          email: "sarad@gmail.com",
+          phone: "+977-9813951586",
+          bio: "Team Manager",
+          country: "Budhanilkantha",
+          city: "Budhanilkantha, Kathmandu",
+        };
+  });
+
+  const handleUserChange = (updatedUser: User) => {
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow">
-      <div className="bg-white p-6 rounded-lg shadow mb-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <img
-              src="https://artisan-avenue.onrender.com/assets/profile-DrMMYWIp.png"
-              alt="Profile"
-              className="w-24 h-24 rounded-full mr-6"
-            />
-            <div>
-              <h2 className="text-2xl font-semibold">Sarad Babu Shrestha</h2>
-              <p className="text-gray-600">Team Manager</p>
-              <p className="text-gray-500">Tinkune, Bhaktapur</p>
-            </div>
-          </div>
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 "
-            onClick={TopCard}
-          >
-            Edit
-          </button>
-        </div>
-      </div>
-
-      <div className="bg-white p-6 rounded-lg shadow mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">Personal Information</h3>
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={MiddleButton}
-          >
-            Edit
-          </button>
-        </div>
-        <div className="space-y-2 text-gray-700">
-          <p>
-            <strong>First Name:</strong> Sarad Babu
-          </p>
-          <p>
-            <strong>Last Name:</strong> Shrestha
-          </p>
-          <p>
-            <strong>Email Address:</strong> sarad@gmail.com
-          </p>
-          <p>
-            <strong>Phone:</strong> +977-9813951586
-          </p>
-          <p>
-            <strong>Bio:</strong> Team Manager
-          </p>
-        </div>
-      </div>
-
-      {/* Address Section */}
-      <div className="bg-white p-6 rounded-lg shadow">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">Address</h3>
-          <button
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            onClick={DownCard}
-          >
-            Edit
-          </button>
-        </div>
-        <div className="space-y-2 text-gray-700">
-          <p>
-            <strong>Country:</strong> Budhanilkantha
-          </p>
-          <p>
-            <strong>City/State:</strong> Budhanilkantha, Kathmandu
-          </p>
-        </div>
-      </div>
+      <TopCard user={user} />
+      <MiddleButton user={user} onUserChange={handleUserChange} />
+      <DownCard user={user} onUserChange={handleUserChange} />
     </div>
   );
 };
