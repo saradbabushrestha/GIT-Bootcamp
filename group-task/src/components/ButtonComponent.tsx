@@ -1,9 +1,9 @@
-import { ButtonComponentProps } from "../../types/Sign Up/ButtonComponentProps";
+import { ButtonComponentProps } from "../types/utils/utils";
 
 const ButtonComponent = ({ btnBgColor, btnText }: ButtonComponentProps) => {
   return (
     <button
-      className={`w-[30vw] font-bold text-white rounded-lg pt-2 pb-2 ${btnBgColor} mt-6`}
+      className={`w-[404px] font-bold text-white rounded-[10px]  ${btnBgColor} mt-[46.57px] h-[32px]`}
     >
       {btnText}
     </button>

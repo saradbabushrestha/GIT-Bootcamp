@@ -1,13 +1,13 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { User } from "../types/UserTypes";
+import { User } from "../../types/admin/admin";
 import {
   fetchUsers,
   deleteUser,
   promoteToAdmin,
   demoteToUser,
-} from "../services/userServices";
-import UserTable from "../modules/users/components/UserTable";
-import SearchBar from "../components/SearchBar";
+} from "../../api/userServices";
+import UserTable from "../../modules/users/components/UserTable";
+import SearchBar from "../../components/SearchBar";
 
 const SuperAdminDashboard: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -73,7 +73,7 @@ const SuperAdminDashboard: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Super Admin Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-4 text-center">Super Admin Dashboard</h1>
 
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
 
