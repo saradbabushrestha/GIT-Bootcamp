@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { User } from "../../types/users/users";
+import { User } from "../../types/admin/admin";
 import {
   fetchUsers,
   deleteUser,
@@ -73,7 +73,9 @@ const SuperAdminDashboard: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Super Admin Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-4 text-center">
+        Super Admin Dashboard
+      </h1>
 
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
 
