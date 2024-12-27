@@ -11,9 +11,9 @@ function App() {
   return (
     <Router>
       <div className="flex h-screen">
-        {/* <Sidebar /> */}
+        <Sidebar />
 
-        <div className="flex-grow bg-[#f4fafe]">
+        <div className="flex-grow bg-[#f4fafe] p-4">
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/admin" element={<AdminDashboard />} />
@@ -21,7 +21,6 @@ function App() {
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>

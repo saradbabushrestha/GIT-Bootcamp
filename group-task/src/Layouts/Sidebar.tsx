@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BarChart, User, LogOut, Menu } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  BarChart,
+  User,
+  LogOut,
+  Menu,
+  FileSliders,
+  Shield,
+} from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 interface IMenuItem {
   title: string;
@@ -13,10 +20,22 @@ const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [activeItem, setActiveItem] = useState<string>("/feed");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems: IMenuItem[] = [
     { title: "Feed", icon: <BarChart className="w-6 h-6" />, path: "/feed" },
     { title: "Profile", icon: <User className="w-6 h-6" />, path: "/profile" },
+    {
+      title: "Data",
+      icon: <FileSliders className="w-6 h-6" />,
+      path: "/admin",
+    },
+    {
+      title: "SuperData",
+      icon: <Shield className="w-6 h-6" />,
+      path: "/superadmin",
+    },
   ];
 
   useEffect(() => {
@@ -36,9 +55,13 @@ const Sidebar = () => {
   }, []);
 
   useEffect(() => {
-    const currentPath = window.location.pathname;
-    setActiveItem(currentPath);
-  }, [window.location.pathname]);
+    setActiveItem(location.pathname);
+  }, [location.pathname]);
+
+  const handleLogout = () => {
+    console.log("User logged out");
+    navigate("/");
+  };
 
   const sidebarVariants = {
     expanded: { width: "12rem" },
@@ -56,6 +79,7 @@ const Sidebar = () => {
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="p-2 text-gray-600 hover:bg-gray-200 rounded-lg focus:outline-none transition-all"
+          aria-label="Toggle Sidebar"
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -101,13 +125,13 @@ const Sidebar = () => {
       </motion.div>
 
       <div className="border-t border-gray-300">
-        <Link to="/logout" className="group">
+        <div className="group" onClick={handleLogout}>
           <motion.div
             whileHover={{
               scale: 1.03,
               backgroundColor: "rgba(239, 68, 68, 0.1)",
             }}
-            className={`flex items-center px-4 py-3 cursor-pointer hover:bg-red-100 transition-all duration-300`}
+            className="flex items-center px-4 py-3 cursor-pointer hover:bg-red-100 transition-all duration-300"
           >
             <LogOut className="w-6 h-6 text-red-500" />
             {isExpanded ? (
@@ -125,7 +149,7 @@ const Sidebar = () => {
               </span>
             )}
           </motion.div>
-        </Link>
+        </div>
       </div>
     </motion.div>
   );
