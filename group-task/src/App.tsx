@@ -21,6 +21,7 @@ function App() {
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
