@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Sidebar from "../src/layouts/Sidebar";
-import Feed from "../src/pages/Feed";
-import Profile from "../src/pages/Profile";
-import Logout from "../src/pages/Logout";
-import SignUp from "../src/pages/SignUp";
+import Sidebar from "./Layouts/Sidebar";
+import Feed from "./Pages/Feed";
+import Profile from "./Pages/Profile";
+import Logout from "./Pages/Logout";
+import SignUp from "./Pages/SignUp";
 import SuperAdminDashboard from "./modules/superadmin";
 import AdminDashboard from "./modules/admin";
+import Login from "./Pages/Login";
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
