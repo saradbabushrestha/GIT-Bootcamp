@@ -6,6 +6,6 @@ export type ButtonComponentProps = {
 export type TextFieldComponentProps = {
   placeholder: string;
   name: string;
-
   inputType: string;
+  icon?: React.ReactNode;
 };
