@@ -11,6 +11,18 @@
       "name": "Subha Khadgi",
       "email": "subha@example.com",
       "role": "user"
+    },
+    {
+      "id": "2",
+      "name": "Sarad Shrestha",
+      "email": "sarad@example.com",
+      "role": "user"
+    },
+    {
+      "id": "5",
+      "name": "binayak chettri",
+      "email": "binu@example.com",
+      "role": "user"
     }
   ]
 }
