@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { fetchUsers, deleteUser } from "../../api/userServices";
+import { fetchUsers, deleteUser } from "../../redux/services/userServices";
 import { User } from "../../types/users/users";
 import SearchBar from "../../components/SearchBar";
 import AdminTable from "./components/AdminTable";

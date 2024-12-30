@@ -1,44 +1,27 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { User } from '../../types/users/users';
 
 const initialState: User = {
   id: '',
-  username: '',
+  name: '',
   email: '',
-  password: '',
-  rePassword: '',
-  rememberMe: false,
-  acceptTerm: false,
+  role: 'user',
+  feed: [],
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-
-    updateField(state: { [key: string]: string | boolean }, action) {
-        const { name, value } = action.payload;
-        state[name] = value;
-      },
-
-    resetForm() {
-      return initialState; 
-      },
-    
-    toggleCheckbox(state, action: PayloadAction<'rememberMe' | 'acceptTerm'>) {
-      const name = action.payload;
-      state[name] = !state[name]; 
+    addToFeed(state, action) {
+      state.feed.push(action.payload); 
     },
-
-    saveUserData(state, action) {
-      const { id, username, email } = action.payload;
-      state.id = id;
-      state.username = username;
-      state.email = email;
+    setUserFeed(state, action) {
+      state.feed = action.payload;
     },
   },
 });
 
-export const { updateField, resetForm, toggleCheckbox, saveUserData } = userSlice.actions;
+export const { addToFeed, setUserFeed } = userSlice.actions;
 
 export default userSlice.reducer;

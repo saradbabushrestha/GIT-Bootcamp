@@ -5,7 +5,7 @@ import {
   deleteUser,
   promoteToAdmin,
   demoteToUser,
-} from "../../api/userServices";
+} from "../../redux/services/userServices";
 import UserTable from "../../modules/users/components/UserTable";
 import SearchBar from "../../components/SearchBar";
 
