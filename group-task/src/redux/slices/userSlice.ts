@@ -1,20 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { User } from '../../types/users/users';
+import { createSlice } from "@reduxjs/toolkit";
+import { User } from "../../types/users/users";
 
 const initialState: User = {
-  id: '',
-  name: '',
-  email: '',
-  role: 'user',
+  id: "",
+  name: "",
+  email: "",
+  role: "user",
   feed: [],
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     addToFeed(state, action) {
-      state.feed.push(action.payload); 
+      state.feed.push(action.payload);
     },
     setUserFeed(state, action) {
       state.feed = action.payload;

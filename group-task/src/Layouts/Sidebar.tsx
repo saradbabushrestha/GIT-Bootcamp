@@ -20,9 +20,11 @@ const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [activeItem, setActiveItem] = useState<string>("/feed");
+  const [role, setRole] = useState<string>("user");
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Define menu items
   const menuItems: IMenuItem[] = [
     { title: "Feed", icon: <BarChart className="w-6 h-6" />, path: "/feed" },
     { title: "Profile", icon: <User className="w-6 h-6" />, path: "/profile" },
@@ -37,6 +39,27 @@ const Sidebar = () => {
       path: "/superadmin",
     },
   ];
+
+  const filteredMenuItems = menuItems.filter((item) => {
+    if (role === "user") {
+      return item.path === "/feed" || item.path === "/profile";
+    }
+    if (role === "admin") {
+      return (
+        item.path === "/feed" ||
+        item.path === "/profile" ||
+        item.path === "/admin"
+      );
+    }
+    if (role === "superadmin") {
+      return (
+        item.path === "/feed" ||
+        item.path === "/profile" ||
+        item.path === "/superadmin"
+      );
+    }
+    return true;
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,7 +109,7 @@ const Sidebar = () => {
       </div>
 
       <motion.div className="flex-grow mt-4">
-        {menuItems.map((item, index) => (
+        {filteredMenuItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
