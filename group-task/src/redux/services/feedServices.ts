@@ -33,4 +33,3 @@ export const getUserById = async (userId: string) => {
     throw new Error("Error fetching user");
   }
 };
-

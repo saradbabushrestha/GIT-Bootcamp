@@ -1,10 +1,10 @@
 export type User = {
   id: string;
-  username: string;
+  name: string;
   email: string;
   password: string;
   rePassword: string;
   rememberMe: boolean;
   acceptTerm: boolean;
-  urole: "user" | "admin" | "superadmin";
+  role: "user" | "admin" | "superadmin";
 };

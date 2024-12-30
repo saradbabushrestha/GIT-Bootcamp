@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserFeed } from "../redux/slices/userSlice";
-import { getFeed, addPostToFeed, getUserById } from "../redux/services/feedServices";
+import { getFeed, addPostToFeed, getUserById} from "../redux/services/feedServices";
 import { RootState } from "../redux/store";
 
 const Feed = () => {
@@ -19,7 +19,7 @@ const Feed = () => {
 
       const user = await getUserById(id); 
       setUserName(user.name); 
-      
+
       const userFeed = await getFeed(id); 
       dispatch(setUserFeed(userFeed)); 
     };
