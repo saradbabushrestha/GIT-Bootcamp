@@ -78,7 +78,7 @@ const Login = () => {
             <TextFieldComponent
               name="Email"
               placeholder="Email"
-              inputType="string"
+              inputType="email"
               icon={
                 <FaEnvelope
                   size={23}
@@ -125,7 +125,8 @@ const Login = () => {
             </div>
 
             <ButtonComponent
-              styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors font-inter font-bold text-lg"
+              styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-[#536fdc] text-white rounded-lg transition-colors
+              font-inter font-bold text-lg"
               btnText="LOG IN"
             />
 

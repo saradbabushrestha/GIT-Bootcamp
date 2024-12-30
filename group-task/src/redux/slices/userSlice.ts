@@ -19,9 +19,12 @@ const userSlice = createSlice({
     setUserFeed(state, action) {
       state.feed = action.payload;
     },
+    setUser: (state, action) => {
+      state.id = action.payload; 
+    },
   },
 });
 
-export const { addToFeed, setUserFeed } = userSlice.actions;
+export const { addToFeed, setUserFeed, setUser } = userSlice.actions;
 
 export default userSlice.reducer;
