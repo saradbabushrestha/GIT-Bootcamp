@@ -1,49 +1,62 @@
+import React, { useState } from "react";
 import { FaLock, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { loginUser } from "../redux/actions/loginActions";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     if (!email || !password) {
       setError("Both email and password are required.");
+      setIsSubmitting(false);
       return;
     }
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
-      return;
-    }
-
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (!passwordRegex.test(password)) {
-      setError(
-        "Password must be at least 8 characters long and contain both letters and numbers."
-      );
+      setIsSubmitting(false);
       return;
     }
 
     setError("");
 
-    navigate("/feed");
+    try {
+      const user = await dispatch(loginUser(email, password));
+
+      console.log("User from login:", user);
+
+      if (user && user.id) {
+        navigate(`/${user.id}/feed`);
+      } else {
+        setError("User ID is not available.");
+      }
+    } catch (err) {
+      console.error("Login failed:", err);
+      setError("There was an error logging in. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="flex justify-between h-screen w-screen">
       <div className="flex-1 flex items-center justify-center">
-        <div className="flex flex-col gap-y-6">
-          <div className="font-montserrat">
+        <div className="flex flex-col gap-y-6 w-full max-w-sm">
+          <div className="font-montserrat text-center">
             <h1 className="text-4xl font-bold text-[#09090B]">
               Login to your Account
             </h1>
@@ -63,7 +76,7 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="relative font-montserrat text-[15px font-medium">
+          <div className="relative font-montserrat text-[15px] font-medium">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300"></div>
             </div>
@@ -110,7 +123,7 @@ const Login = () => {
               <div className="flex items-center">
                 <input
                   type="checkbox"
-                  className="h-4 w-4 text-[#8098F9] focus:ring-[#8098F9] appearance-none border-2 border-[#8098F9] rounded checked:bg-[#8098F9]  "
+                  className="h-4 w-4 text-[#8098F9] focus:ring-[#8098F9] appearance-none border-2 border-[#8098F9] rounded checked:bg-[#8098F9]"
                 />
                 <label className="ml-2 text-[#AAAAAA]">Remember me</label>
               </div>
@@ -125,13 +138,13 @@ const Login = () => {
             </div>
 
             <ButtonComponent
-              styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-[#536fdc] text-white rounded-lg transition-colors
-              font-inter font-bold text-lg"
-              btnText="LOG IN"
+              styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors font-inter font-bold text-lg"
+              btnText={isSubmitting ? "Logging In..." : "LOG IN"}
+              disabled={isSubmitting}
             />
 
             <p className="text-center text-[#71717A] font-montserrat text-sm">
-              Don't have account?{" "}
+              Don't have an account?{" "}
               <a
                 href="#"
                 className="text-[#8098F9] hover:text-blue-500 font-bold"
