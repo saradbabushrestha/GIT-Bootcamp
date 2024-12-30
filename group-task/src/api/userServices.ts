@@ -4,7 +4,7 @@ import axios from "axios";
 import { User } from "../types/users/users";
 
 // json server url
-const API_URL = "http://localhost:5000/users";
+const API_URL = "http://localhost:5001/users";
 
 // Fetch all users
 export const fetchUsers = async (): Promise<User[]> => {

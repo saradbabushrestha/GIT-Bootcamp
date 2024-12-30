@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": "2",
-      "name": "Sarad Shrestha",
-      "email": "babu@example.com",
-      "role": "user"
-    },
-    {
       "id": "4",
       "name": "Swikriti Suwal",
       "email": "swikriti@example.com",
@@ -16,7 +10,7 @@
       "id": "5",
       "name": "Subha Khadgi",
       "email": "subha@example.com",
-      "role": "admin"
+      "role": "user"
     }
   ]
 }

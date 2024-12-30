@@ -1,11 +1,20 @@
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // e.preventDefault();
+
+    navigate("/feed");
+  };
+
   return (
-    <div className="flex justify-between h-screen">
+    <div className="flex justify-between h-screen w-screen">
       <div className="flex-1 flex items-center justify-center">
         <div className="">
           <div>
@@ -37,7 +46,8 @@ const Login = () => {
             </div>
           </div>
 
-          <form className="">
+          <form onSubmit={handleLogin}>
+            {" "}
             <TextFieldComponent
               name="Email"
               placeholder="Email"
@@ -48,7 +58,6 @@ const Login = () => {
               placeholder="Password"
               inputType="password"
             />
-
             <ButtonComponent btnBgColor="bg-primary-color" btnText="Login" />
           </form>
         </div>
