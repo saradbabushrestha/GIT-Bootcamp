@@ -1,7 +1,7 @@
 // here it contains the function for admin and super admin like fetching users, removing users, promoting and demoting the users and also the API_URL
 
 import axios from "axios";
-import { User } from "../types/users/users";
+import { User } from "../../types/users/users";
 
 // json server url
 const API_URL = "http://localhost:5001/users";

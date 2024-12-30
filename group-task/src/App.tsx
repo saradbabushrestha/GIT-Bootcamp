@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./layouts/Sidebar";
 import Feed from "./pages/Feed";
@@ -17,9 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/feed" element={<Feed />} />
+            <Route path="/:id/feed" element={<Feed />} />
             <Route path="/superadmin" element={<SuperAdminDashboard />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/:id/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
           </Routes>

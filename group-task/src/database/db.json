@@ -1,16 +1,99 @@
 {
   "users": [
     {
-      "id": "4",
+      "id": "1",
       "name": "Swikriti Suwal",
       "email": "swikriti@example.com",
-      "role": "user"
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554156748",
+          "name": "Swikriti Suwal",
+          "text": "I am feeling great"
+        },
+        {
+          "id": "1735554519540",
+          "name": "Swikriti Suwal",
+          "text": "yup"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Sarad Shrestha",
+      "email": "sarad@example.com",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554132946",
+          "name": "Sarad Shrestha",
+          "text": "My first post"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "User",
+      "email": "user@example.com",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554178853",
+          "name": "User",
+          "text": "one"
+        },
+        {
+          "id": "1735554182741",
+          "name": "User",
+          "text": "two"
+        },
+        {
+          "id": "1735554185013",
+          "name": "User",
+          "text": "three"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Sita Dahal",
+      "email": "sita@example.com",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554194124",
+          "name": "Sita Dahal",
+          "text": "Day one"
+        },
+        {
+          "id": "1735554197273",
+          "name": "Sita Dahal",
+          "text": "Post one"
+        }
+      ]
     },
     {
       "id": "5",
-      "name": "Subha Khadgi",
-      "email": "subha@example.com",
-      "role": "user"
+      "name": "Name Name",
+      "email": "name@example.com",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554206796",
+          "name": "Name Name",
+          "text": "My new idea"
+        },
+        {
+          "id": "1735554209965",
+          "name": "Name Name",
+          "text": "Yes"
+        },
+        {
+          "id": "1735554217082",
+          "name": "Name Name",
+          "text": "One try"
+        }
+      ]
     }
   ]
 }
