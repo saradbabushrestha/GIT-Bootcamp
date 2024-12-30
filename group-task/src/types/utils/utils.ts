@@ -1,5 +1,5 @@
 export type ButtonComponentProps = {
-  btnBgColor: string;
+  styles: string;
   btnText: string;
 };
 

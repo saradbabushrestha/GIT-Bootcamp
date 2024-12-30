@@ -97,14 +97,11 @@ const Login = () => {
               </div>
             </div>
             {/* Login Button */}
-            <button
-              type="submit"
-              className="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors
-              font-inter font-bold text-lg
-              "
-            >
-              LOG IN
-            </button>
+            <ButtonComponent
+              styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors
+              font-inter font-bold text-lg"
+              btnText="LOG IN"
+            />
             {/* Create account */}
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have account?{" "}
@@ -115,7 +112,6 @@ const Login = () => {
                 Create an account
               </a>
             </p>
-            <ButtonComponent btnBgColor="bg-primary-color" btnText="Login" />
           </form>
         </div>
       </div>
