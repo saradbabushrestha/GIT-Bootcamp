@@ -4,25 +4,39 @@
       "id": "4",
       "name": "Swikriti Suwal",
       "email": "swikriti@example.com",
-      "role": "user"
+      "password": "password123",
+      "role": "admin"
     },
     {
       "id": "5",
       "name": "Subha Khadgi",
       "email": "subha@example.com",
+      "password": "password123",
       "role": "user"
     },
     {
       "id": "2",
       "name": "Sarad Shrestha",
       "email": "sarad@example.com",
-      "role": "user"
+      "password": "password123",
+      "role": "superadmin"
     },
     {
       "id": "5",
       "name": "binayak chettri",
       "email": "binu@example.com",
+      "password": "password123",
       "role": "user"
+    },
+    {
+      "id": "123",
+      "username": "johnDoe",
+      "email": "john@example.com",
+      "password": "password123",
+      "rePassword": "password123",
+      "rememberMe": true,
+      "acceptTerm": true,
+      "userRole": "user"
     }
   ]
 }
