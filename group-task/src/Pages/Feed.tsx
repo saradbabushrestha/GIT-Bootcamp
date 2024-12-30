@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserFeed } from "../redux/slices/userSlice";
-import { getFeed, addPostToFeed, getUserById} from "../redux/services/feedServices";
+import {
+  getFeed,
+  addPostToFeed,
+  getUserById,
+} from "../redux/services/feedServices";
 import { RootState } from "../redux/store";
 
 const Feed = () => {
@@ -17,11 +21,11 @@ const Feed = () => {
     const fetchFeed = async () => {
       if (!id) return;
 
-      const user = await getUserById(id); 
-      setUserName(user.name); 
+      const user = await getUserById(id);
+      setUserName(user.name);
 
-      const userFeed = await getFeed(id); 
-      dispatch(setUserFeed(userFeed)); 
+      const userFeed = await getFeed(id);
+      dispatch(setUserFeed(userFeed));
     };
 
     fetchFeed();
@@ -31,15 +35,15 @@ const Feed = () => {
     if (userInput.trim() === "") return;
 
     const newPost = {
-      id: Date.now().toString(), 
-      name: userName, 
-      text: userInput 
+      id: Date.now().toString(),
+      name: userName,
+      text: userInput,
     };
 
     await addPostToFeed(id || "", newPost);
 
-    dispatch(setUserFeed([newPost, ...userFeed])); 
-    setUserInput(""); 
+    dispatch(setUserFeed([newPost, ...userFeed]));
+    setUserInput("");
   };
 
   const renderPosts = () => {
@@ -52,13 +56,13 @@ const Feed = () => {
           >
             <div className="flex items-center gap-3">
               <img
-                src="https://img.icons8.com/?size=100&id=7820&format=png&color=000000" 
+                src="https://img.icons8.com/?size=100&id=7820&format=png&color=000000"
                 alt="User Avatar"
                 className="w-8 h-8 rounded-full"
               />
-              <span className="font-semibold">{post.name}</span> 
+              <span className="font-semibold">{post.name}</span>
             </div>
-            <p className="mt-2">{post.text}</p> 
+            <p className="mt-2">{post.text}</p>
           </div>
         ))}
       </div>
