@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Sidebar from "./Layouts/Sidebar";
-import Feed from "./Pages/Feed";
-import Profile from "./Pages/Profile";
-import Logout from "./Pages/Logout";
-import SignUp from "./Pages/SignUp";
+import Sidebar from "./layouts/Sidebar";
+import Feed from "./pages/Feed";
+import Profile from "./pages/Profile";
+import Logout from "./pages/Logout";
+import SignUp from "./pages/SignUp";
 import SuperAdminDashboard from "./modules/superadmin";
 import AdminDashboard from "./modules/admin";
-import Login from "./Pages/Login";
+import Login from "./pages/Login";
 function App() {
   return (
     <Router>

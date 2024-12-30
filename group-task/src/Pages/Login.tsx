@@ -1,10 +1,20 @@
 import { FaLock, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
+import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // e.preventDefault();
+
+    navigate("/feed");
+  };
+
   return (
-    <div className="flex justify-between h-screen">
+    <div className="flex justify-between h-screen w-screen">
       <div className="flex-1 flex items-center justify-center">
         <div className="flex flex-col gap-y-6">
           {/* Login and Welcome */}
@@ -41,8 +51,8 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Email Login Form */}
-          <form className="">
+          <form onSubmit={handleLogin}>
+            {" "}
             <TextFieldComponent
               name="Email"
               placeholder="Email"
@@ -67,7 +77,6 @@ const Login = () => {
                 />
               }
             />
-
             {/* Remember me and Forgot Password */}
             <div className="flex items-center justify-between mb-[25px] font-montserrat text-sm">
               <div className="flex items-center">
@@ -87,7 +96,6 @@ const Login = () => {
                 </a>
               </div>
             </div>
-
             {/* Login Button */}
             <button
               type="submit"
@@ -97,7 +105,6 @@ const Login = () => {
             >
               LOG IN
             </button>
-
             {/* Create account */}
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have account?{" "}
@@ -108,6 +115,7 @@ const Login = () => {
                 Create an account
               </a>
             </p>
+            <ButtonComponent btnBgColor="bg-primary-color" btnText="Login" />
           </form>
         </div>
       </div>
