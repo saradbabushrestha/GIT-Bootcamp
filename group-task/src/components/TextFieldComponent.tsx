@@ -1,10 +1,12 @@
 import { TextFieldComponentProps } from "../types/utils/utils";
 
 const TextFieldComponent = ({
+  value,
   name,
   placeholder,
   inputType,
   icon,
+  handleChange,
 }: TextFieldComponentProps) => {
   return (
     <>
@@ -12,6 +14,8 @@ const TextFieldComponent = ({
         <div className="flex items-center relative">
           {icon}
           <input
+            onChange={handleChange}
+            value={value}
             name={name}
             placeholder={placeholder}
             type={inputType}

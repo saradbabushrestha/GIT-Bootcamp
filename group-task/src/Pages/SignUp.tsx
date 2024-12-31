@@ -2,6 +2,7 @@ import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -9,6 +10,19 @@ const SignUp = () => {
   const handleSignup = () => {
     navigate("/login");
   };
+
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      acceptTerms: false,
+    },
+    onSubmit: () => {
+      console.log(values);
+    },
+  });
 
   return (
     <div className="flex justify-between h-screen w-screen">
@@ -23,9 +37,11 @@ const SignUp = () => {
           <form onSubmit={handleSignup}>
             <div>
               <TextFieldComponent
-                name="Username"
+                value={values.username}
+                name="username"
                 placeholder="Username"
                 inputType="string"
+                handleChange={handleChange}
                 icon={
                   <FaUser
                     size={23}
@@ -35,9 +51,11 @@ const SignUp = () => {
                 }
               />
               <TextFieldComponent
-                name="Email"
+                value={values.email}
+                name="email"
                 placeholder="Email"
                 inputType="email"
+                handleChange={handleChange}
                 icon={
                   <FaEnvelope
                     size={23}
@@ -47,9 +65,11 @@ const SignUp = () => {
                 }
               />
               <TextFieldComponent
-                name="Password"
+                value={values.password}
+                name="password"
                 placeholder="Password"
                 inputType="password"
+                handleChange={handleChange}
                 icon={
                   <FaLock
                     size={23}
@@ -59,9 +79,11 @@ const SignUp = () => {
                 }
               />
               <TextFieldComponent
-                name="Confirm Password"
+                value={values.confirmPassword}
+                name="confirmPassword"
                 placeholder="Confirm Password"
                 inputType="password"
+                handleChange={handleChange}
                 icon={
                   <FaLock
                     size={23}
@@ -75,14 +97,11 @@ const SignUp = () => {
               <input
                 type="checkbox"
                 name="acceptTerms"
-                className="mt-1 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="mt-1 rounded border-gray-300 "
               />
-              <label className="ml-2 text-sm text-gray-600">
+              <label className="ml-2 text-sm text-[#71717A]">
                 Accept{" "}
-                <a
-                  href="#"
-                  className="text-[#8098F9] font-medium hover:underline"
-                >
+                <a className="text-[#8098F9] font-medium hover:underline">
                   terms and conditions
                 </a>
               </label>
@@ -93,11 +112,18 @@ const SignUp = () => {
               font-inter font-bold text-lg
               mt-[25px]"
               btnText="SIGN UP"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
             />
           </form>
-          <p className="text-center text-sm text-gray-600 mt-[-5px]">
+          <p className="text-center text-sm text-[#71717A] mt-[-5px] font-montserrat">
             You have account?{" "}
-            <a href="#" className="text-blue-500 hover:underline">
+            <a
+              className="text-[#8098F9] hover:underline font-semibold cursor-pointer"
+              onClick={() => navigate("/login")}
+            >
               Login now
             </a>
           </p>

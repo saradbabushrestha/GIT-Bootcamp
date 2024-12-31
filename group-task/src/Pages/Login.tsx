@@ -88,10 +88,7 @@ const Login = () => {
                 <label className=" ml-2 text-[#AAAAAA]">Remember me</label>
               </div>
               <div>
-                <a
-                  href="#"
-                  className="font-semibold text-[#8098F9] hover:text-blue-500"
-                >
+                <a className="font-semibold text-[#8098F9] hover:text-blue-500">
                   Forgot Password?
                 </a>
               </div>
@@ -106,8 +103,8 @@ const Login = () => {
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have account?{" "}
               <a
-                href="#"
-                className="text-[#8098F9] hover:text-blue-500 font-bold"
+                className="text-[#8098F9] hover:text-blue-500 font-bold cursor-pointer hover:underline"
+                onClick={() => navigate("/")}
               >
                 Create an account
               </a>
