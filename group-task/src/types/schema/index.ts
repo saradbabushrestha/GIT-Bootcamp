@@ -20,4 +20,8 @@ export const signupSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password")], "Passwords must match")
     .required("Password confirmation is required"),
+
+  acceptTerms: yup
+    .bool()
+    .oneOf([true], "Accept Terms & Conditions is required"),
 });

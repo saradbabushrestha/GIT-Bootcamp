@@ -6,6 +6,7 @@ export const endpoints = {
     getById: (id: string) => `${API_URL}/users/${id}`,
     update: (id: string) => `${API_URL}/users/${id}`,
     delete: (id: string) => `${API_URL}/users/${id}`,
+    create: () => `${API_URL}/users`,
   },
   feed: {
     getByUserId: (id: string) => `${API_URL}/users/${id}/feed`,

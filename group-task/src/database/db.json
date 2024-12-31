@@ -124,6 +124,38 @@
       "id": "3d88",
       "email": "sita@example.com",
       "password": "Password123"
+    },
+    {
+      "id": "7185",
+      "name": "Binayak",
+      "email": "bin@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "58cd",
+      "name": "",
+      "email": "",
+      "password": "",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "c55d",
+      "name": "Sameer",
+      "email": "sameer@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "5c5d",
+      "name": "manager",
+      "email": "abc@yahoo.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
     }
   ]
 }

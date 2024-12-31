@@ -2,6 +2,14 @@ import axios from "axios";
 import { User } from "../../types/users/users";
 import { endpoints } from "../endpoints";
 
+export const createUser = async (userData: object): Promise<void> => {
+  try {
+    await axios.post(endpoints.users.create(), userData);
+  } catch (error) {
+    console.log("Error", error);
+  }
+};
+
 export const fetchUsers = async (): Promise<User[]> => {
   try {
     const response = await axios.get(endpoints.users.getAll());
