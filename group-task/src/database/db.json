@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "1",
-      "name": "Swikriti Suwal",
+      "name": "Swikriti Suwalll",
       "email": "swikriti@example.com",
       "role": "user",
       "feed": [
@@ -20,6 +20,11 @@
           "id": "1735558012180",
           "name": "Swikriti Suwal",
           "text": "add new post"
+        },
+        {
+          "id": "1735558801950",
+          "name": "Swikriti Suwal",
+          "text": "new post"
         }
       ]
     },
@@ -33,6 +38,11 @@
           "id": "1735554132946",
           "name": "Sarad Shrestha",
           "text": "My first post"
+        },
+        {
+          "id": "1735558385536",
+          "name": "Sarad Shrestha",
+          "text": "Why why"
         }
       ]
     },
