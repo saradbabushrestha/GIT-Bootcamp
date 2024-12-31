@@ -1,4 +1,5 @@
 export type ButtonComponentProps = {
+  btnType?: any;
   styles: string;
   btnText: string;
   onClick?: (e?: any) => void;

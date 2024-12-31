@@ -3,13 +3,10 @@ import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import { signupSchema } from "../types/schema";
 
 const SignUp = () => {
   const navigate = useNavigate();
-
-  const handleSignup = () => {
-    navigate("/login");
-  };
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -19,9 +16,11 @@ const SignUp = () => {
       confirmPassword: "",
       acceptTerms: false,
     },
-    onSubmit: () => {
-      console.log(values);
+    onSubmit: (values) => {
+      console.log("Form Submitted!", values);
+      navigate("/login");
     },
+    validationSchema: signupSchema,
   });
 
   return (
@@ -34,7 +33,7 @@ const SignUp = () => {
             </h1>
             <p className="text-lg text-[#71717A]">Unlock all Features!</p>
           </div>
-          <form onSubmit={handleSignup}>
+          <form onSubmit={handleSubmit}>
             <div>
               <TextFieldComponent
                 value={values.username}
@@ -97,7 +96,9 @@ const SignUp = () => {
               <input
                 type="checkbox"
                 name="acceptTerms"
-                className="mt-1 rounded border-gray-300 "
+                className="mt-1 rounded border-gray-300"
+                checked={values.acceptTerms}
+                onChange={handleChange}
               />
               <label className="ml-2 text-sm text-[#71717A]">
                 Accept{" "}
@@ -108,9 +109,8 @@ const SignUp = () => {
             </div>
 
             <ButtonComponent
-              styles="w-full py-3 px-4 bg-[#8098F9]  hover:bg-[#536fdc] text-white rounded-lg transition-colors
-              font-inter font-bold text-lg
-              mt-[25px]"
+              styles="w-full py-3 px-4 bg-[#8098F9] hover:bg-[#536fdc] text-white rounded-lg transition-colors
+              font-inter font-bold text-lg mt-[25px]"
               btnText="SIGN UP"
               onClick={(e) => {
                 e.preventDefault();

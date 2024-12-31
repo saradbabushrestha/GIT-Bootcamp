@@ -1,12 +1,13 @@
 import { ButtonComponentProps } from "../types/utils/utils";
 
 const ButtonComponent = ({
+  btnType,
   styles,
   btnText,
   onClick,
 }: ButtonComponentProps) => {
   return (
-    <button onClick={onClick} className={`${styles}`}>
+    <button type={btnType} onClick={onClick} className={`${styles}`}>
       {btnText}
     </button>
   );
