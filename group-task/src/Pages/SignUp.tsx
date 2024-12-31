@@ -16,9 +16,9 @@ const SignUp = () => {
       confirmPassword: "",
       acceptTerms: false,
     },
-    onSubmit: (values) => {
-      console.log("Form Submitted!", values);
-      navigate("/login");
+    onSubmit: () => {
+      console.log(values);
+      console.log("inside onsubmit");
     },
     validationSchema: signupSchema,
   });
