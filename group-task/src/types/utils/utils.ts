@@ -5,6 +5,7 @@ export type ButtonComponentProps = {
 };
 
 export type TextFieldComponentProps = {
+  name: string;
   value?: string;
   placeholder: string;
   inputType: string;
