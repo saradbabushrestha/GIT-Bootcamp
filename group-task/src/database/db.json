@@ -4,6 +4,7 @@
       "id": "1",
       "name": "Swikriti Suwalll",
       "email": "swikriti@example.com",
+      "password": "Password123",
       "role": "user",
       "feed": [
         {
@@ -32,6 +33,7 @@
       "id": "2",
       "name": "Sarad Shrestha",
       "email": "sarad@example.com",
+      "password": "Password123",
       "role": "user",
       "feed": [
         {
@@ -50,6 +52,7 @@
       "id": "3",
       "name": "User123",
       "email": "user@example.commmm",
+      "password": "Password123",
       "role": "user",
       "feed": [
         {
@@ -73,6 +76,7 @@
       "id": "4",
       "name": "Sita Dahal",
       "email": "sita@example.com",
+      "password": "Password123",
       "role": "user",
       "feed": [
         {
@@ -91,6 +95,7 @@
       "id": "5",
       "name": "Name Name",
       "email": "name@example.com",
+      "password": "Password123",
       "role": "user",
       "feed": [
         {
@@ -109,6 +114,11 @@
           "text": "One try"
         }
       ]
+    },
+    {
+      "id": "3d88",
+      "email": "sita@example.com",
+      "password": "Password123"
     }
   ]
 }
