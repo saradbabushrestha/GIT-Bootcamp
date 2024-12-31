@@ -1,45 +1,37 @@
-// here it contains the function for admin and super admin like fetching users, removing users, promoting and demoting the users and also the API_URL
-
 import axios from "axios";
 import { User } from "../../types/users/users";
+import { endpoints } from "../endpoints";
 
-// json server url
-const API_URL = "http://localhost:5001/users";
-
-// Fetch all users
 export const fetchUsers = async (): Promise<User[]> => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(endpoints.users.getAll());
     return response.data;
   } catch (error) {
-    console.error("Error fetching users:", error);
+    console.log("Error", error);
     return [];
   }
 };
 
-// Delete a user by id
-export const deleteUser = async (id: number): Promise<void> => {
+export const deleteUser = async (id: string): Promise<void> => {
   try {
-    await axios.delete(`${API_URL}/${id}`);
+    await axios.delete(endpoints.users.delete(id));
   } catch (error) {
-    console.error("Error deleting user:", error);
+    console.log("Error", error);
   }
 };
 
-// Promote a user to admin
-export const promoteToAdmin = async (id: number): Promise<void> => {
+export const promoteToAdmin = async (id: string): Promise<void> => {
   try {
-    await axios.patch(`${API_URL}/${id}`, { role: "admin" });
+    await axios.patch(endpoints.users.update(id), { role: "admin" });
   } catch (error) {
-    console.error("Error promoting user to admin:", error);
+    console.log("Error:", error);
   }
 };
 
-// Demote an admin to user
-export const demoteToUser = async (id: number): Promise<void> => {
+export const demoteToUser = async (id: string): Promise<void> => {
   try {
-    await axios.patch(`${API_URL}/${id}`, { role: "user" });
+    await axios.patch(endpoints.users.update(id), { role: "user" });
   } catch (error) {
-    console.error("Error demoting admin to user:", error);
+    console.log("Error", error);
   }
 };

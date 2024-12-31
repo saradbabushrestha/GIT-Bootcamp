@@ -7,7 +7,6 @@ export type ButtonComponentProps = {
 export type TextFieldComponentProps = {
   value?: string;
   placeholder: string;
-  name: string;
   inputType: string;
   icon?: React.ReactNode;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;

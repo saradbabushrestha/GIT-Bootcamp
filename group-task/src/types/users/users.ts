@@ -1,13 +1,10 @@
 export type User = {
-    id: string; 
-    name: string;
-    email: string;
-    role: "admin" | "user" | "superadmin";
-    feed:Post[];
-  };
-
-  export type Post = {
-    id: number;  
-    name: 'string';
-    text: string;
-  };
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  rePassword: string;
+  rememberMe: boolean;
+  acceptTerm: boolean;
+  role: "user" | "admin" | "superadmin";
+};
