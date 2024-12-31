@@ -21,6 +21,7 @@ const SignUp = () => {
     },
     onSubmit: () => {
       console.log(values);
+      console.log('inside onsubmit');
     },
   });
 
