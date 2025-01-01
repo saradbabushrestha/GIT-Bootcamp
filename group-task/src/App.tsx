@@ -23,8 +23,8 @@ function App() {
             <Route path="/:id/feed" element={<Feed />} />
             <Route path="/:id/profile" element={<Profile />} />
 
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/superadmin" element={<SuperAdminDashboard />} />
+            <Route path="/:id/admin" element={<AdminDashboard />} />
+            <Route path="/:id/superadmin" element={<SuperAdminDashboard />} />
 
             <Route path="/logout" element={<Logout />} />
             <Route path="*" element={<Error />} />

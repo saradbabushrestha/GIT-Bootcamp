@@ -1,60 +1,43 @@
+import React, { useState } from "react";
 import { FaLock, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../redux/actions/loginActions";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
-import { useFormik } from "formik";
-import { loginSchema } from "../types/schema";
-import { fetchUsers } from "../redux/services/userServices";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { values, handleChange, errors, resetForm } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-    validationSchema: loginSchema,
-  });
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  async function handleSubmit() {
-    if (!values.email || !values.password) {
-      alert("Please fill in all fields");
+    if (!email || !password) {
+      setError("Both email and password are required.");
+      setIsSubmitting(false);
       return;
     }
 
-    // Fetch data to validate if entered email and password are correct
-    const data = await fetchUsers();
-    let detailsMatched = false;
-
-    data.forEach((user) => {
-      if (user.email === values.email && user.password === values.password) {
-        detailsMatched = true;
-      }
-    });
-
-    if (detailsMatched) {
-      alert("Login successful");
-      resetForm();
-    } else {
-      alert("Email or password is incorrect");
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      setIsSubmitting(false);
       return;
     }
 
-    console.log(values);
-    console.log(errors);
-  }
+    setError("");
 
-  /* 
     try {
       const user = await dispatch(loginUser(email, password));
+
       console.log("User from login:", user);
 
       if (user && user.id) {
@@ -67,7 +50,7 @@ const Login = () => {
       setError("There was an error logging in. Please try again.");
       setIsSubmitting(false);
     }
-  }; */
+  };
 
   return (
     <div className="flex justify-between h-screen w-screen">
@@ -104,49 +87,37 @@ const Login = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="relative">
-              <TextFieldComponent
-                value={values.email}
-                handleChange={handleChange}
-                name="email"
-                placeholder="Email"
-                inputType="email"
-                icon={
-                  <FaEnvelope
-                    size={23}
-                    color="rgb(45,49,166,0.2)"
-                    className="absolute left-3 top-[18px]"
-                  />
-                }
-              />
-              {errors.email && (
-                <span className="text-red-400 text-[9px] absolute bottom-[0px]">
-                  {errors.email?.toUpperCase()}
-                </span>
-              )}
-            </div>
-            <div className="relative">
-              <TextFieldComponent
-                value={values.password}
-                handleChange={handleChange}
-                name="password"
-                placeholder="Password"
-                inputType="password"
-                icon={
-                  <FaLock
-                    size={23}
-                    color="rgb(45,49,166,0.2)"
-                    className="absolute left-3 top-[17px]"
-                  />
-                }
-              />
-              {errors.password && (
-                <span className="text-red-400 text-[9px] absolute bottom-[0px]">
-                  {errors.password?.toUpperCase()}
-                </span>
-              )}
-            </div>
+          <form onSubmit={handleLogin}>
+            <TextFieldComponent
+              name="Email"
+              placeholder="Email"
+              inputType="email"
+              icon={
+                <FaEnvelope
+                  size={23}
+                  color="rgb(45,49,166,0.2)"
+                  className="absolute left-3 top-[18px]"
+                />
+              }
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextFieldComponent
+              name="Password"
+              placeholder="Password"
+              inputType="password"
+              icon={
+                <FaLock
+                  size={23}
+                  color="rgb(45,49,166,0.2)"
+                  className="absolute left-3 top-[17px]"
+                />
+              }
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
             <div className="flex items-center justify-between mb-[25px] font-montserrat text-sm">
               <div className="flex items-center">
@@ -158,7 +129,7 @@ const Login = () => {
               </div>
               <div>
                 <a
-                  href=""
+                  href="#"
                   className="font-semibold text-[#8098F9] hover:text-blue-500"
                 >
                   Forgot Password?
@@ -168,18 +139,15 @@ const Login = () => {
 
             <ButtonComponent
               styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors font-inter font-bold text-lg"
-              btnText={"LOG IN"}
-              onClick={(e) => {
-                e.preventDefault();
-                handleSubmit();
-              }}
+              btnText={isSubmitting ? "Logging In..." : "LOG IN"}
+              disabled={isSubmitting}
             />
 
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have an account?{" "}
               <a
-                onClick={() => navigate("/")}
-                className="text-[#8098F9] hover:text-blue-500 hover:underline font-bold cursor-pointer "
+                href="#"
+                className="text-[#8098F9] hover:text-blue-500 font-bold"
               >
                 Create an account
               </a>

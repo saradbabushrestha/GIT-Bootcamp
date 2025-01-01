@@ -3,14 +3,16 @@ import { motion } from "framer-motion";
 import {
   BarChart,
   User,
-  FileSliders,
-  Shield,
   LogOut,
   Menu,
+  FileSliders,
+  Shield,
 } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
+
+import { logout } from "../redux/slices/authSlice";
 
 interface IMenuItem {
   title: string;
@@ -19,55 +21,59 @@ interface IMenuItem {
 }
 
 const Sidebar = () => {
-  const { id, role } = useSelector((state: RootState) => state.user);
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [activeItem, setActiveItem] = useState<string>(`/${id}/feed`);
+  const [activeItem, setActiveItem] = useState<string>("/feed");
+
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { id, role } = useSelector((state: RootState) => state.auth.user || {});
+  const dispatch = useDispatch();
+
+  // Define menu items
   const menuItems: IMenuItem[] = [
     {
       title: "Feed",
       icon: <BarChart className="w-6 h-6" />,
-      path: `/${id}/feed`,
+      path: `${id}/feed`,
     },
     {
       title: "Profile",
       icon: <User className="w-6 h-6" />,
-      path: `/${id}/profile`,
+      path: `${id}/profile`,
     },
     {
       title: "Data",
       icon: <FileSliders className="w-6 h-6" />,
-      path: `/${id}/admin`,
+      path: `${id}/admin`,
     },
     {
       title: "SuperData",
       icon: <Shield className="w-6 h-6" />,
-      path: `/${id}/superadmin`,
+      path: `${id}/superadmin`,
     },
   ];
 
   const filteredMenuItems = menuItems.filter((item) => {
     if (role === "user") {
-      return item.path === `/${id}/feed` || item.path === `/${id}/profile`;
+      return item.path.includes("/feed") || item.path.includes("/profile");
     }
     if (role === "admin") {
       return (
-        item.path === `/${id}/feed` ||
-        item.path === `/${id}/profile` ||
-        item.path === `/${id}/admin`
+        item.path.includes("/feed") ||
+        item.path.includes("/profile") ||
+        item.path.includes("/admin")
       );
     }
     if (role === "superadmin") {
       return (
-        item.path === `/${id}/feed` ||
-        item.path === `/${id}/profile` ||
-        item.path === `/${id}/superadmin`
+        item.path.includes("/feed") ||
+        item.path.includes("/profile") ||
+        item.path.includes("/superadmin")
       );
     }
-    return true;
+    return false;
   });
 
   useEffect(() => {
@@ -91,7 +97,7 @@ const Sidebar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    console.log("User logged out");
+    dispatch(logout()); // Clear Redux state
     navigate("/");
   };
 
@@ -121,7 +127,7 @@ const Sidebar = () => {
         {filteredMenuItems.map((item, index) => (
           <Link
             key={index}
-            to={item.path}
+            to={`/${item.path}`}
             className="group"
             onClick={() => setActiveItem(item.path)}
           >
@@ -131,7 +137,7 @@ const Sidebar = () => {
                 backgroundColor: "rgba(59, 130, 246, 0.1)",
               }}
               className={`flex items-center px-4 py-3 cursor-pointer transition-all duration-300 ${
-                activeItem === item.path
+                activeItem === `/${item.path}`
                   ? "bg-blue-100 text-blue-600"
                   : "hover:bg-blue-100"
               }`}
