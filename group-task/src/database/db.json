@@ -5,7 +5,7 @@
       "name": "Swikriti Suwal",
       "email": "swikriti@example.com",
       "password": "Password123",
-      "role": "user",
+      "role": "superadmin",
       "feed": [
         {
           "id": "1735554156748",
@@ -24,7 +24,7 @@
       "name": "Sarad Shrestha",
       "email": "sarad@example.com",
       "password": "Password123",
-      "role": "user",
+      "role": "admin",
       "feed": [
         {
           "id": "1735554132946",
@@ -62,7 +62,7 @@
       "name": "Sita Dahal",
       "email": "sita@example.com",
       "password": "Password123",
-      "role": "user",
+      "role": "admin",
       "feed": [
         {
           "id": "1735554194124",

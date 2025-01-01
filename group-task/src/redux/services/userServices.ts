@@ -16,6 +16,14 @@ export const fetchUsers = async (): Promise<User[]> => {
     return [];
   }
 };
+//create user
+export const createUser = async (userData: object): Promise<void> => {
+  try {
+    await axios.post(endpoints.users.create(), userData);
+  } catch (error) {
+    console.log("Error", error);
+  }
+};
 
 // Delete a user by id
 export const deleteUser = async (id: number): Promise<void> => {

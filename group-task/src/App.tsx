@@ -17,9 +17,9 @@ function App() {
         <div className="flex-grow bg-[#f4fafe]">
           <Routes>
             <Route path="/" element={<SignUp />} />
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/:id/admin" element={<AdminDashboard />} />
             <Route path="/:id/feed" element={<Feed />} />
-            <Route path="/superadmin" element={<SuperAdminDashboard />} />
+            <Route path="/:id/superadmin" element={<SuperAdminDashboard />} />
             <Route path="/:id/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/login" element={<Login />} />
