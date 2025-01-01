@@ -31,7 +31,6 @@ const Sidebar = () => {
   const { id, role } = useSelector((state: RootState) => state.auth.user || {});
   const dispatch = useDispatch();
 
-  // Define menu items
   const menuItems: IMenuItem[] = [
     {
       title: "Feed",
@@ -97,7 +96,7 @@ const Sidebar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    dispatch(logout()); // Clear Redux state
+    dispatch(logout());
     navigate("/");
   };
 
