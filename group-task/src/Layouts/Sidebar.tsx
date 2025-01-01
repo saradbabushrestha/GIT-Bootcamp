@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 import {
   BarChart,
   User,
-  LogOut,
-  Menu,
   FileSliders,
   Shield,
+  LogOut,
+  Menu,
 } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 interface IMenuItem {
   title: string;
@@ -17,45 +19,52 @@ interface IMenuItem {
 }
 
 const Sidebar = () => {
+  const { id, role } = useSelector((state: RootState) => state.user);
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [activeItem, setActiveItem] = useState<string>("/feed");
-  const [role, setRole] = useState<string>("user");
+  const [activeItem, setActiveItem] = useState<string>(`/${id}/feed`);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Define menu items
   const menuItems: IMenuItem[] = [
-    { title: "Feed", icon: <BarChart className="w-6 h-6" />, path: "/feed" },
-    { title: "Profile", icon: <User className="w-6 h-6" />, path: "/profile" },
+    {
+      title: "Feed",
+      icon: <BarChart className="w-6 h-6" />,
+      path: `/${id}/feed`,
+    },
+    {
+      title: "Profile",
+      icon: <User className="w-6 h-6" />,
+      path: `/${id}/profile`,
+    },
     {
       title: "Data",
       icon: <FileSliders className="w-6 h-6" />,
-      path: "/admin",
+      path: `/${id}/admin`,
     },
     {
       title: "SuperData",
       icon: <Shield className="w-6 h-6" />,
-      path: "/superadmin",
+      path: `/${id}/superadmin`,
     },
   ];
 
   const filteredMenuItems = menuItems.filter((item) => {
     if (role === "user") {
-      return item.path === "/feed" || item.path === "/profile";
+      return item.path === `/${id}/feed` || item.path === `/${id}/profile`;
     }
     if (role === "admin") {
       return (
-        item.path === "/feed" ||
-        item.path === "/profile" ||
-        item.path === "/admin"
+        item.path === `/${id}/feed` ||
+        item.path === `/${id}/profile` ||
+        item.path === `/${id}/admin`
       );
     }
     if (role === "superadmin") {
       return (
-        item.path === "/feed" ||
-        item.path === "/profile" ||
-        item.path === "/superadmin"
+        item.path === `/${id}/feed` ||
+        item.path === `/${id}/profile` ||
+        item.path === `/${id}/superadmin`
       );
     }
     return true;

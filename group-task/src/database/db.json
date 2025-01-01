@@ -82,7 +82,7 @@
       "name": "Sita Dahal",
       "email": "sita@example.com",
       "password": "Password123",
-      "role": "user",
+      "role": "admin",
       "feed": [
         {
           "id": "1735554194124",
