@@ -16,11 +16,11 @@ interface IMenuItem {
   path: string;
 }
 
-const Sidebar = () => {
+const Sidebar = () => {a
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [activeItem, setActiveItem] = useState<string>("/feed");
-  const [role, setRole] = useState<string>("user");
+  const [role, setRole] = useState<string>("admin");
   const navigate = useNavigate();
   const location = useLocation();
 
