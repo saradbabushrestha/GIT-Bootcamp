@@ -156,6 +156,14 @@
       "password": "Hello1234",
       "role": "user",
       "feed": []
+    },
+    {
+      "id": "34f1",
+      "name": "hello",
+      "email": "xyz@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
     }
   ]
 }
