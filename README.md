@@ -1,7 +1,7 @@
 # User-Admin-Superadmin Management System
 
 ## Overview
-This project is a basic role based user management system.
+This project is a basic role-based user management system.
 
 It has these main features:
 - Users can Sign up and Log in.
@@ -56,20 +56,19 @@ npm run server
 Add the screenshots of your app here to show its features:
 
 - **Login Page:**
-  ![Login Page](<screenshot-link>)
+  ![Login Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/login.png)
 
 - **Signup Page:**
-  ![Signup Page](<screenshot-link>)
+  ![Signup Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/signup.png)
 
 - **Feed Page:**
-  ![Signup Page](<screenshot-link>)
+  ![Feed Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/feed.png)
 
 - **Profile Page:**
-  ![Signup Page](<screenshot-link>)
+  ![Profile Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/profile.png)
 
 - **Admin Dashboard:**
-  ![Admin Dashboard](<screenshot-link>)
+  ![Admin Dashboard](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/admin.png)
 
 - **Superadmin Panel:**
-  ![Superadmin Panel](<screenshot-link>)
-
+  ![Superadmin Panel](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/superadmin.png)
