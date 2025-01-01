@@ -3,6 +3,7 @@ export type ButtonComponentProps = {
   styles: string;
   btnText: string;
   onClick?: (e?: any) => void;
+  disabled?: boolean;
 };
 
 export type TextFieldComponentProps = {
