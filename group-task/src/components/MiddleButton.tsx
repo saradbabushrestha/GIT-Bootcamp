@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { User } from "../types/users/userprofile";
+import { User } from "../types/users/users";
 
 type MiddleButtonProps = {
   user: User;
@@ -34,16 +34,16 @@ const MiddleButton: React.FC<MiddleButtonProps> = ({ user, onUserChange }) => {
             <div className="flex flex-col space-y-2">
               <input
                 type="text"
-                value={tempUser.firstName}
+                value={tempUser.name}
                 onChange={(e) =>
-                  setTempUser({ ...tempUser, firstName: e.target.value })
+                  setTempUser({ ...tempUser, name: e.target.value })
                 }
                 placeholder="Enter first name"
                 className="p-2 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
 
-            <div className="flex flex-col space-y-2">
+            {/* <div className="flex flex-col space-y-2">
               <input
                 type="text"
                 value={tempUser.lastName}
@@ -53,7 +53,7 @@ const MiddleButton: React.FC<MiddleButtonProps> = ({ user, onUserChange }) => {
                 placeholder="Enter last name"
                 className="p-2 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
-            </div>
+            </div> */}
 
             <div className="flex flex-col space-y-2">
               <input
@@ -67,7 +67,7 @@ const MiddleButton: React.FC<MiddleButtonProps> = ({ user, onUserChange }) => {
               />
             </div>
 
-            <div className="flex flex-col space-y-2">
+            {/* <div className="flex flex-col space-y-2">
               <input
                 type="text"
                 value={tempUser.phone}
@@ -89,24 +89,18 @@ const MiddleButton: React.FC<MiddleButtonProps> = ({ user, onUserChange }) => {
                 placeholder="Enter bio"
                 className="p-2 border rounded-md border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
-            </div>
+            </div> */}
           </>
         ) : (
           <>
             <p>
-              <strong>First Name:</strong> {user.firstName}
-            </p>
-            <p>
-              <strong>Last Name:</strong> {user.lastName}
+              <strong>Name:</strong> {user.name}
             </p>
             <p>
               <strong>Email Address:</strong> {user.email}
             </p>
             <p>
-              <strong>Phone:</strong> {user.phone}
-            </p>
-            <p>
-              <strong>Bio:</strong> {user.bio}
+              <strong>Role:</strong> {user.role}
             </p>
           </>
         )}

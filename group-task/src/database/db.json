@@ -1,16 +1,169 @@
 {
   "users": [
     {
-      "id": "4",
-      "name": "Swikriti Suwal",
+      "id": "1",
+      "name": "Swikriti Suwalll",
       "email": "swikriti@example.com",
-      "role": "user"
+      "password": "Password123",
+      "role": "superadmin",
+      "feed": [
+        {
+          "id": "1735554156748",
+          "name": "Swikriti Suwal",
+          "text": "I am feeling great"
+        },
+        {
+          "id": "1735554519540",
+          "name": "Swikriti Suwal",
+          "text": "yup"
+        },
+        {
+          "id": "1735558012180",
+          "name": "Swikriti Suwal",
+          "text": "add new post"
+        },
+        {
+          "id": "1735558801950",
+          "name": "Swikriti Suwal",
+          "text": "new post"
+        },
+        {
+          "id": "1735620023268",
+          "name": "Swikriti Suwalll",
+          "text": "yesyesnono"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Sarad Shrestha",
+      "email": "sarad@example.com",
+      "password": "Password123",
+      "role": "admin",
+      "feed": [
+        {
+          "id": "1735554132946",
+          "name": "Sarad Shrestha",
+          "text": "My first post"
+        },
+        {
+          "id": "1735558385536",
+          "name": "Sarad Shrestha",
+          "text": "Why why"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "User123",
+      "email": "user@example.commmm",
+      "password": "Password123",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554178853",
+          "name": "User",
+          "text": "one"
+        },
+        {
+          "id": "1735554182741",
+          "name": "User",
+          "text": "two"
+        },
+        {
+          "id": "1735554185013",
+          "name": "User",
+          "text": "three"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Sita Dahal",
+      "email": "sita@example.com",
+      "password": "Password123",
+      "role": "admin",
+      "feed": [
+        {
+          "id": "1735554194124",
+          "name": "Sita Dahal",
+          "text": "Day one"
+        },
+        {
+          "id": "1735554197273",
+          "name": "Sita Dahal",
+          "text": "Post one"
+        }
+      ]
     },
     {
       "id": "5",
-      "name": "Subha Khadgi",
-      "email": "subha@example.com",
-      "role": "user"
+      "name": "Name Name",
+      "email": "name@example.com",
+      "password": "Password123",
+      "role": "user",
+      "feed": [
+        {
+          "id": "1735554206796",
+          "name": "Name Name",
+          "text": "My new idea"
+        },
+        {
+          "id": "1735554209965",
+          "name": "Name Name",
+          "text": "Yes"
+        },
+        {
+          "id": "1735554217082",
+          "name": "Name Name",
+          "text": "One try"
+        }
+      ]
+    },
+    {
+      "id": "3d88",
+      "email": "sita@example.com",
+      "password": "Password123"
+    },
+    {
+      "id": "7185",
+      "name": "Binayak",
+      "email": "bin@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "c55d",
+      "name": "Sameer",
+      "email": "sameer@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "5c5d",
+      "name": "manager",
+      "email": "abc@yahoo.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "34f1",
+      "name": "hello",
+      "email": "xyz@gmail.com",
+      "password": "Hello1234",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "6633",
+      "name": "ss",
+      "email": "s@gmail.com",
+      "password": "Password123",
+      "role": "user",
+      "feed": []
     }
   ]
 }

@@ -1,10 +1,14 @@
 import { ButtonComponentProps } from "../types/utils/utils";
 
-const ButtonComponent = ({ btnBgColor, btnText }: ButtonComponentProps) => {
+const ButtonComponent = ({
+  btnType,
+  styles,
+  btnText,
+  onClick,
+  disabled,
+}: ButtonComponentProps) => {
   return (
-    <button
-      className={`w-[404px] font-bold text-white rounded-[10px]  ${btnBgColor} mt-[46.57px] h-[32px]`}
-    >
+    <button type={btnType} onClick={onClick} className={`${styles}`}>
       {btnText}
     </button>
   );

@@ -9,6 +9,10 @@ import {
   Shield,
 } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../redux/store";
+
+import { logout } from "../redux/slices/authSlice";
 
 interface IMenuItem {
   title: string;
@@ -20,23 +24,56 @@ const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [activeItem, setActiveItem] = useState<string>("/feed");
+
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { id, role } = useSelector((state: RootState) => state.auth.user || {});
+  const dispatch = useDispatch();
+
   const menuItems: IMenuItem[] = [
-    { title: "Feed", icon: <BarChart className="w-6 h-6" />, path: "/feed" },
-    { title: "Profile", icon: <User className="w-6 h-6" />, path: "/profile" },
+    {
+      title: "Feed",
+      icon: <BarChart className="w-6 h-6" />,
+      path: `${id}/feed`,
+    },
+    {
+      title: "Profile",
+      icon: <User className="w-6 h-6" />,
+      path: `${id}/profile`,
+    },
     {
       title: "Data",
       icon: <FileSliders className="w-6 h-6" />,
-      path: "/admin",
+      path: `${id}/admin`,
     },
     {
       title: "SuperData",
       icon: <Shield className="w-6 h-6" />,
-      path: "/superadmin",
+      path: `${id}/superadmin`,
     },
   ];
+
+  const filteredMenuItems = menuItems.filter((item) => {
+    if (role === "user") {
+      return item.path.includes("/feed") || item.path.includes("/profile");
+    }
+    if (role === "admin") {
+      return (
+        item.path.includes("/feed") ||
+        item.path.includes("/profile") ||
+        item.path.includes("/admin")
+      );
+    }
+    if (role === "superadmin") {
+      return (
+        item.path.includes("/feed") ||
+        item.path.includes("/profile") ||
+        item.path.includes("/superadmin")
+      );
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,7 +96,7 @@ const Sidebar = () => {
   }, [location.pathname]);
 
   const handleLogout = () => {
-    console.log("User logged out");
+    dispatch(logout());
     navigate("/");
   };
 
@@ -86,10 +123,10 @@ const Sidebar = () => {
       </div>
 
       <motion.div className="flex-grow mt-4">
-        {menuItems.map((item, index) => (
+        {filteredMenuItems.map((item, index) => (
           <Link
             key={index}
-            to={item.path}
+            to={`/${item.path}`}
             className="group"
             onClick={() => setActiveItem(item.path)}
           >
@@ -99,7 +136,7 @@ const Sidebar = () => {
                 backgroundColor: "rgba(59, 130, 246, 0.1)",
               }}
               className={`flex items-center px-4 py-3 cursor-pointer transition-all duration-300 ${
-                activeItem === item.path
+                activeItem === `/${item.path}`
                   ? "bg-blue-100 text-blue-600"
                   : "hover:bg-blue-100"
               }`}

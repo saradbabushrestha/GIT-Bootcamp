@@ -3,11 +3,15 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
         "primary-color": "#1E4FFE",
       },
       backgroundImage: {
-        "sign-up": `url("https://i.pinimg.com/736x/f7/fe/f6/f7fef63970ddd892ae29b1f99c1a0348.jpg")`,
+        "sign-up": `url("/images/signup-image.png")`,
         "log-in": `url("/images/login-image.png")`,
       },
     },
