@@ -8,30 +8,64 @@ import SuperAdminDashboard from "./modules/superadmin";
 import AdminDashboard from "./modules/admin";
 import Login from "./pages/Login";
 import Error from "./pages/Error";
+import ProtectedRoute from "./utils/ProtectedRoute"; 
+import { Provider } from 'react-redux'; 
+import store from './redux/store';
 
 function App() {
   return (
-    <Router>
-      <div className="flex h-screen">
-        <Sidebar />
+    <Provider store={store}>
+      <Router>
+        <div className="flex h-screen">
+          <Sidebar />
 
-        <div className="flex-grow bg-[#f4fafe]">
-          <Routes>
-            <Route path="/" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+          <div className="flex-grow bg-[#f4fafe]">
+            <Routes>
+              <Route path="/" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
 
-            <Route path="/:id/feed" element={<Feed />} />
-            <Route path="/:id/profile" element={<Profile />} />
+              {/* Protected routes */}
+              <Route
+                path="/:id/feed"
+                element={
+                  <ProtectedRoute>
+                    <Feed />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/:id/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/:id/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/:id/superadmin"
+                element={
+                  <ProtectedRoute>
+                    <SuperAdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route path="/:id/admin" element={<AdminDashboard />} />
-            <Route path="/:id/superadmin" element={<SuperAdminDashboard />} />
-
-            <Route path="/logout" element={<Logout />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
+              <Route path="/logout" element={<Logout />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
+
 export default App;

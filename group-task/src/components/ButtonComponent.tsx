@@ -1,4 +1,4 @@
-import { ButtonComponentProps } from "../types/utils/utils";
+import { ButtonComponentProps } from "../types/components/components";
 
 const ButtonComponent = ({
   btnType,
