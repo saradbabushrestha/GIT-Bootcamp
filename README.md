@@ -1,74 +1,50 @@
-# User-Admin-Superadmin Management System
+# React + TypeScript + Vite
 
-## Overview
-This project is a basic role-based user management system.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-It has these main features:
-- Users can Sign up and Log in.
-- Admins can view user details and remove users.
-- Superadmins can view admin details and promote/demote users.
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### User
-- Can create an account (Sign up).
-- Can log in to their account.
+## Expanding the ESLint configuration
 
-### Admin
-- Can see all user details.
-- Can remove users.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-### Superadmin
-- Can view all admin details.
-- Can promote or demote users between roles.
+- Configure the top-level `parserOptions` property like this:
 
-## Setup
-Follow these steps to set up the project locally:
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/saradbabushrestha/GIT-Bootcamp
-cd group-task
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-2. Install dependencies:
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```bash
-npm i
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-3. Run the app:
-
-```bash
-npm run dev
-```
-
-4. Start the json server:
-
-```bash
-npm run server
-```
-
-5. Open in your browser: Navigate to `http://localhost:5173/`
-
-## Screenshots
-Add the screenshots of your app here to show its features:
-
-- **Login Page:**
-  ![Login Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/login.png)
-
-- **Signup Page:**
-  ![Signup Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/signup.png)
-
-- **Feed Page:**
-  ![Feed Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/feed.png)
-
-- **Profile Page:**
-  ![Profile Page](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/profile.png)
-
-- **Admin Dashboard:**
-  ![Admin Dashboard](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/admin.png)
-
-- **Superadmin Panel:**
-  ![Superadmin Panel](https://github.com/saradbabushrestha/GIT-Bootcamp/blob/main/images/superadmin.png)
