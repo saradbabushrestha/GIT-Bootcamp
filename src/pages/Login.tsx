@@ -151,7 +151,7 @@ const Login = () => {
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have an account?{" "}
               <a
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/signup")}
                 className="text-[#8098F9] hover:text-blue-500 hover:underline font-bold cursor-pointer "
               >
                 Create an account

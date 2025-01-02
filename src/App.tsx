@@ -21,8 +21,9 @@ function App() {
 
           <div className="flex-grow bg-[#f4fafe]">
             <Routes>
-              <Route path="/" element={<SignUp />} />
+              <Route path="/" element={<Login />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
 
               {/* Protected routes */}
               <Route
