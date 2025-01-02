@@ -3,7 +3,7 @@ import { FaLock, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../redux/actions/loginActions";
+import { loginSuccess } from "../redux/slices/authSlice";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
 
@@ -36,14 +36,14 @@ const Login = () => {
     setError("");
 
     try {
-      const user = await dispatch(loginUser(email, password));
-
-      console.log("User from login:", user);
+      const user = { id: 1, name: "John Doe", email };
 
       if (user && user.id) {
+        dispatch(loginSuccess(user));
         navigate(`/${user.id}/feed`);
       } else {
         setError("User ID is not available.");
+        setIsSubmitting(false);
       }
     } catch (err) {
       console.error("Login failed:", err);
@@ -57,12 +57,8 @@ const Login = () => {
       <div className="flex-1 flex items-center justify-center">
         <div className="flex flex-col gap-y-6 w-full max-w-sm">
           <div className="font-montserrat text-center">
-            <h1 className="text-4xl font-bold text-[#09090B]">
-              Login to your Account
-            </h1>
-            <p className="text-lg text-[#71717A]">
-              Welcome back! Select method to log in:
-            </p>
+            <h1 className="text-4xl font-bold text-[#09090B]">Login to your Account</h1>
+            <p className="text-lg text-[#71717A]">Welcome back! Select method to log in:</p>
           </div>
 
           <div className="flex gap-4 font-montserrat font-medium text-[22px]">
@@ -81,9 +77,7 @@ const Login = () => {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center">
-              <span className="px-2 bg-[#f4fafe] text-gray-500">
-                or continue with email
-              </span>
+              <span className="px-2 bg-[#f4fafe] text-gray-500">or continue with email</span>
             </div>
           </div>
 
@@ -92,13 +86,7 @@ const Login = () => {
               name="Email"
               placeholder="Email"
               inputType="email"
-              icon={
-                <FaEnvelope
-                  size={23}
-                  color="rgb(45,49,166,0.2)"
-                  className="absolute left-3 top-[18px]"
-                />
-              }
+              icon={<FaEnvelope size={23} color="rgb(45,49,166,0.2)" className="absolute left-3 top-[18px]" />}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -106,13 +94,7 @@ const Login = () => {
               name="Password"
               placeholder="Password"
               inputType="password"
-              icon={
-                <FaLock
-                  size={23}
-                  color="rgb(45,49,166,0.2)"
-                  className="absolute left-3 top-[17px]"
-                />
-              }
+              icon={<FaLock size={23} color="rgb(45,49,166,0.2)" className="absolute left-3 top-[17px]" />}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -121,19 +103,11 @@ const Login = () => {
 
             <div className="flex items-center justify-between mb-[25px] font-montserrat text-sm">
               <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 text-[#8098F9] focus:ring-[#8098F9] appearance-none border-2 border-[#8098F9] rounded checked:bg-[#8098F9]"
-                />
+                <input type="checkbox" className="h-4 w-4 text-[#8098F9]" />
                 <label className="ml-2 text-[#AAAAAA]">Remember me</label>
               </div>
               <div>
-                <a
-                  href="#"
-                  className="font-semibold text-[#8098F9] hover:text-blue-500"
-                >
-                  Forgot Password?
-                </a>
+                <a href="#" className="font-semibold text-[#8098F9] hover:text-blue-500">Forgot Password?</a>
               </div>
             </div>
 
@@ -145,12 +119,7 @@ const Login = () => {
 
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have an account?{" "}
-              <a
-                href="#"
-                className="text-[#8098F9] hover:text-blue-500 font-bold"
-              >
-                Create an account
-              </a>
+              <a href="#" className="text-[#8098F9] hover:text-blue-500 font-bold">Create an account</a>
             </p>
           </form>
         </div>

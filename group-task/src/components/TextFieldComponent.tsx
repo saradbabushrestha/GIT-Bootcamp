@@ -1,4 +1,4 @@
-import { TextFieldComponentProps } from "../types/utils/utils";
+import { TextFieldComponentProps } from "../types/components/components";
 
 const TextFieldComponent = ({
   name,
