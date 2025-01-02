@@ -19,7 +19,7 @@ const AdminDashboard: React.FC = () => {
     loadUsers();
   }, []);
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     await deleteUser(id);
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);

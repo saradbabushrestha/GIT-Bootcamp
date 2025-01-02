@@ -1,56 +1,49 @@
-import React, { useState } from "react";
 import { FaLock, FaEnvelope, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../redux/actions/loginActions";
 import ButtonComponent from "../components/ButtonComponent";
 import TextFieldComponent from "../components/TextFieldComponent";
+import { useFormik } from "formik";
+import { loginSchema } from "../types/schema";
+import { fetchUsers } from "../redux/services/userServices";
+import { loginUser } from "../redux/actions/loginActions";
+import { AppDispatch } from "../redux/store"
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: async (values) => {
+      const { email, password } = values;
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+      const data = await fetchUsers();
+      const user = data.find(
+        (user) => user.email === email && user.password === password
+      );
 
-    if (!email || !password) {
-      setError("Both email and password are required.");
-      setIsSubmitting(false);
-      return;
-    }
+      if (user) {
+        console.log(user);
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    setError("");
-
-    try {
-      const user = await dispatch(loginUser(email, password));
-
-      console.log("User from login:", user);
-
-      if (user && user.id) {
-        navigate(`/${user.id}/feed`);
+        try {
+          const loggedInUser = dispatch(loginUser(email, password));
+          if (loggedInUser && (await loggedInUser).id) {
+            navigate(`/${(await loggedInUser).id}/feed`);
+          }
+        } catch (err) {
+          console.error("Login failed:", err);
+        }
       } else {
-        setError("User ID is not available.");
+        alert("Invalid email or password");
       }
-    } catch (err) {
-      console.error("Login failed:", err);
-      setError("There was an error logging in. Please try again.");
-      setIsSubmitting(false);
-    }
-  };
+    },
+  });
 
   return (
     <div className="flex justify-between h-screen w-screen">
@@ -87,37 +80,50 @@ const Login = () => {
             </div>
           </div>
 
-          <form onSubmit={handleLogin}>
-            <TextFieldComponent
-              name="Email"
-              placeholder="Email"
-              inputType="email"
-              icon={
-                <FaEnvelope
-                  size={23}
-                  color="rgb(45,49,166,0.2)"
-                  className="absolute left-3 top-[18px]"
-                />
-              }
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextFieldComponent
-              name="Password"
-              placeholder="Password"
-              inputType="password"
-              icon={
-                <FaLock
-                  size={23}
-                  color="rgb(45,49,166,0.2)"
-                  className="absolute left-3 top-[17px]"
-                />
-              }
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <form onSubmit={formik.handleSubmit}>
+            <div className="relative">
+              <TextFieldComponent
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                name="email"
+                placeholder="Email"
+                inputType="email"
+                icon={
+                  <FaEnvelope
+                    size={23}
+                    color="rgb(45,49,166,0.2)"
+                    className="absolute left-3 top-[18px]"
+                  />
+                }
+              />
+              {formik.touched.email && formik.errors.email && (
+                <span className="text-red-400 text-[9px] absolute bottom-[2px]">
+                  {formik.errors.email}
+                </span>
+              )}
+            </div>
 
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            <div className="relative">
+              <TextFieldComponent
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                name="password"
+                placeholder="Password"
+                inputType="password"
+                icon={
+                  <FaLock
+                    size={23}
+                    color="rgb(45,49,166,0.2)"
+                    className="absolute left-3 top-[17px]"
+                  />
+                }
+              />
+              {formik.touched.password && formik.errors.password && (
+                <span className="text-red-400 text-[9px] absolute bottom-[2px]">
+                  {formik.errors.password}
+                </span>
+              )}
+            </div>
 
             <div className="flex items-center justify-between mb-[25px] font-montserrat text-sm">
               <div className="flex items-center">
@@ -129,7 +135,7 @@ const Login = () => {
               </div>
               <div>
                 <a
-                  href="#"
+                  href=""
                   className="font-semibold text-[#8098F9] hover:text-blue-500"
                 >
                   Forgot Password?
@@ -139,15 +145,14 @@ const Login = () => {
 
             <ButtonComponent
               styles="w-full mb-[20px] py-3 px-4 bg-[#8098F9] hover:bg-blue-600 text-white rounded-lg transition-colors font-inter font-bold text-lg"
-              btnText={isSubmitting ? "Logging In..." : "LOG IN"}
-              disabled={isSubmitting}
+              btnText={"LOG IN"}
             />
 
             <p className="text-center text-[#71717A] font-montserrat text-sm">
               Don't have an account?{" "}
               <a
-                href="#"
-                className="text-[#8098F9] hover:text-blue-500 font-bold"
+                onClick={() => navigate("/")}
+                className="text-[#8098F9] hover:text-blue-500 hover:underline font-bold cursor-pointer "
               >
                 Create an account
               </a>
@@ -155,6 +160,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+
       <div className="flex-1 bg-log-in bg-contain bg-center bg-no-repeat bg-[#6172F3]"></div>
     </div>
   );

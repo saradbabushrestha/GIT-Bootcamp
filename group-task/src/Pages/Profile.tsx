@@ -8,7 +8,9 @@ import TopCard from "../components/TopCard";
 import MiddleButton from "../components/MiddleButton";
 
 const Profile: React.FC = () => {
+  // id from coming params comes in string so we are converting in number
   const { id } = useParams<{ id: string }>(); 
+  
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -27,13 +29,18 @@ const Profile: React.FC = () => {
   }, [id]); 
 
   const handleUserChange = async (updatedUser: User) => {
-    try {
-      const updatedUserData = await updateUserDetails(id, updatedUser);
-      setUser(updatedUserData);
-    } catch (error) {
-      console.error("Error updating user:", error);
+    if (id) {
+      try {
+        const updatedUserData = await updateUserDetails(id, updatedUser);
+        setUser(updatedUserData);
+      } catch (error) {
+        console.error("Error updating user:", error);
+      }
+    } else {
+      console.log("ID not found for updating");
     }
   };
+
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow">

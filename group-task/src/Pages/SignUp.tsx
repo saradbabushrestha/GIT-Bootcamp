@@ -1,5 +1,5 @@
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
-import TextFieldComponent from "../components/TextFieldComponent";
+import TextFieldComponent from "../components/TextFieldComponent.tsx";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { signupSchema } from "../types/schema/index.ts";
@@ -71,7 +71,7 @@ const SignUp = () => {
                   name="username"
                   placeholder="Username"
                   inputType="string"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   icon={
                     <FaUser
                       size={23}
@@ -81,7 +81,7 @@ const SignUp = () => {
                   }
                 />
                 {errors.username && (
-                  <span className="text-red-400 text-[9px] absolute bottom-[0px]">
+                  <span className="text-red-400 text-[9px] absolute bottom-[2px]">
                     {errors.username?.toUpperCase()}
                   </span>
                 )}
@@ -93,7 +93,7 @@ const SignUp = () => {
                   name="email"
                   placeholder="Email"
                   inputType="email"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   icon={
                     <FaEnvelope
                       size={23}
@@ -103,7 +103,7 @@ const SignUp = () => {
                   }
                 />
                 {errors.email && (
-                  <span className="text-red-400 text-[9px] absolute bottom-[0px]">
+                  <span className="text-red-400 text-[9px] absolute bottom-[2px]">
                     {errors.email?.toUpperCase()}
                   </span>
                 )}
@@ -114,7 +114,7 @@ const SignUp = () => {
                   name="password"
                   placeholder="Password"
                   inputType="password"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   icon={
                     <FaLock
                       size={23}
@@ -124,7 +124,7 @@ const SignUp = () => {
                   }
                 />
                 {errors.password && (
-                  <span className="text-red-400 text-[9px] absolute bottom-[0px]">
+                  <span className="text-red-400 text-[9px] absolute bottom-[2px]">
                     {errors.password?.toUpperCase()}
                   </span>
                 )}
@@ -135,7 +135,7 @@ const SignUp = () => {
                   name="confirmPassword"
                   placeholder="Confirm Password"
                   inputType="password"
-                  handleChange={handleChange}
+                  onChange={handleChange}
                   icon={
                     <FaLock
                       size={23}
@@ -145,7 +145,7 @@ const SignUp = () => {
                   }
                 />
                 {errors.confirmPassword && (
-                  <span className="text-red-400 text-[9px] absolute bottom-[0px]">
+                  <span className="text-red-400 text-[9px] absolute bottom-[2px]">
                     {errors.confirmPassword?.toUpperCase()}
                   </span>
                 )}

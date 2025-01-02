@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { User } from "../../types/admin/admin";
+import { User } from "../../types/users/users";
 import {
   fetchUsers,
   deleteUser,
@@ -39,14 +39,14 @@ const SuperAdminDashboard: React.FC = () => {
   };
 
   // Handle delete user
-  const handleDelete = async (id: number): Promise<void> => {
+  const handleDelete = async (id: string): Promise<void> => {
     await deleteUser(id);
     setUsers(users.filter((user) => user.id !== id));
     setFilteredUsers(filteredUsers.filter((user) => user.id !== id));
   };
 
   // Handle promote user to admin
-  const handlePromote = async (id: number): Promise<void> => {
+  const handlePromote = async (id: string): Promise<void> => {
     await promoteToAdmin(id);
     setUsers(
       users.map((user) => (user.id === id ? { ...user, role: "admin" } : user))
@@ -59,7 +59,7 @@ const SuperAdminDashboard: React.FC = () => {
   };
 
   // Handle demote admin to user
-  const handleDemote = async (id: number): Promise<void> => {
+  const handleDemote = async (id: string): Promise<void> => {
     await demoteToUser(id);
     setUsers(
       users.map((user) => (user.id === id ? { ...user, role: "user" } : user))

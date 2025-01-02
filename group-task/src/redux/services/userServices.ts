@@ -36,7 +36,7 @@ export const promoteToAdmin = async (id: string): Promise<void> => {
   }
 };
 
-export const demoteToUser = async (id: string): Promise<void> => {
+export const demoteToUser = async (id:string): Promise<void> => {
   try {
     await axios.patch(endpoints.users.update(id), { role: "user" });
   } catch (error) {

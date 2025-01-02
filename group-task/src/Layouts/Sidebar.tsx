@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   BarChart,
-  User,
+  User as ProfileIcon,
   LogOut,
   Menu,
   FileSliders,
@@ -11,7 +11,7 @@ import {
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-
+import { User } from "../types/users/userlogin";
 import { logout } from "../redux/slices/authSlice";
 
 interface IMenuItem {
@@ -22,13 +22,12 @@ interface IMenuItem {
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
   const [activeItem, setActiveItem] = useState<string>("/feed");
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { id, role } = useSelector((state: RootState) => state.auth.user || {});
+  const { id, role } = useSelector((state: RootState) => state.auth.user! || {}) as User;
   const dispatch = useDispatch();
 
   const menuItems: IMenuItem[] = [
@@ -39,7 +38,7 @@ const Sidebar = () => {
     },
     {
       title: "Profile",
-      icon: <User className="w-6 h-6" />,
+      icon: <ProfileIcon className="w-6 h-6" />,
       path: `${id}/profile`,
     },
     {
@@ -79,9 +78,7 @@ const Sidebar = () => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setIsExpanded(false);
-        setIsMobile(true);
       } else {
-        setIsMobile(false);
         setIsExpanded(true);
       }
     };

@@ -12,5 +12,6 @@ export type TextFieldComponentProps = {
   placeholder: string;
   inputType: string;
   icon?: React.ReactNode;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };

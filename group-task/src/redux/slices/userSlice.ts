@@ -5,6 +5,7 @@ const initialState: User = {
   id: "",
   name: "",
   email: "",
+  password: "",
   role: "user",
   feed: [],
 };
@@ -26,7 +27,7 @@ const userSlice = createSlice({
       state.id = action.payload;
     },
     clearUserId: (state) => {
-      state.id = null;
+      state.id = '';
     },
   },
 });

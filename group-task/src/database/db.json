@@ -164,6 +164,22 @@
       "password": "Password123",
       "role": "user",
       "feed": []
+    },
+    {
+      "id": "0708",
+      "name": "Usan",
+      "email": "usan@example.com",
+      "password": "Password123",
+      "role": "user",
+      "feed": []
+    },
+    {
+      "id": "dab3",
+      "name": "abc",
+      "email": "abc@example.com",
+      "password": "Password123",
+      "role": "user",
+      "feed": []
     }
   ]
 }

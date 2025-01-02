@@ -5,7 +5,6 @@ const ButtonComponent = ({
   styles,
   btnText,
   onClick,
-  disabled,
 }: ButtonComponentProps) => {
   return (
     <button type={btnType} onClick={onClick} className={`${styles}`}>
